@@ -82,29 +82,6 @@ get "/edit" do
   haml :"pages/edit" 
 end
 
-# post "/pages" do
-#   @post = Post.new(params[:post])
-#   if @post.save
-#     redirect "posts/#{@post.id}", :notice => 'Congrats! Love the new post. (This message will disapear in 4 seconds.)'
-#   else
-#     redirect "posts/create", :error => 'Something went wrong. Try again. (This message will disapear in 4 seconds.)'
-#   end
-# end
-
-# get "/posts/create" do
-#   @title = "Create Post"
-#   @post = Post.new
-#   erb :"posts/create"
-# end
-
-# get "/pages/:id/edit" do
-#   @page = Page.find params[ :id ]
-#   @title = "Edit Form"
-#   haml :"pages/edit"
-# end
-
-# get "/posts/:id" do 
-#   @post = Post.find( params[:id] )
-#   @title = @post.title
-#   erb :"posts/view"
-# end
+get "/blog" do
+  haml :blog
+end
