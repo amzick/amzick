@@ -1,0 +1,16 @@
+%h2 Edit Page 
+%br
+%a{ :href=>"/" } Home
+%br
+
+/ %p= @pages
+
+%form{ :action => "/edit", :method => "post"}
+  %ul
+  - @pages.order( "section ASC" ).each do | page |
+    %p= page.section
+    %li
+      %label{:for => "id_#{ page.id }"}= page.title
+      %br
+      %textarea{:type => "text", :rows=>"20", :cols=>"150", :name => "#{ page.id }", :class => "text" }= page.body
+  %input{:type => "submit", :value => "Save", :class => "button"}

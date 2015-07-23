@@ -1,0 +1,39 @@
+.landing.page
+  .info
+    %h1.name AM ZICK
+    %h3.desc
+      Production
+      %br
+      Post-Production
+      %br
+      Sound
+
+.about.page
+  %h1 About
+  .body
+    %p= @pages_map[ :about ][ 0 ].body
+  .reel
+    - vimeo_id = @pages_map[ :about ][ 1 ].body
+    %iframe{ :src=>"//player.vimeo.com/video/#{vimeo_id}", :width=>"800", :height=>"450", :frameborder=>"0" }
+
+.work.page
+  %h1 Work
+  .body
+    - @pages_map[ :work ].each do | i |
+      %h4= i.title
+      %div{ :class=>"#{ i.title }.view" }
+        %p= i.body
+
+.gear.page
+  %h1 Gear
+  .body
+    %p= @pages_map[ :gear ][ 0 ].body
+
+.contact.page
+  %h1 Contact
+  .body
+    %p= @pages_map[ :contact ][ 0 ].body
+
+%a{ :href=>"/edit" } Edit Page
+
+

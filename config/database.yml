@@ -1,0 +1,6 @@
+# database.yml
+
+development:
+  adapter: sqlite3
+  database: development
+  host: localhost
