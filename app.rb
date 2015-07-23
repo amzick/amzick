@@ -12,8 +12,8 @@ require 'haml'
 
 enable :sessions
 
-class Page < ActiveRecord::Base
-  validates :title, presence: true
+class Field < ActiveRecord::Base
+  validates :name, presence: true
   validates :body, presence: true #, length: { minimum: 1 }
 
   def update_body( new_body )
@@ -22,15 +22,15 @@ class Page < ActiveRecord::Base
 end
 
 get "/" do
-  @pages_map = {
-    :about   => Page.where( section: "about" ).to_a,
-    :work    => Page.where( section: "work" ).to_a,
-    :gear    => Page.where( section: "gear" ).to_a,
-    :contact => Page.where( section: "contact" ).to_a,
+  @fields_map = {
+    :about   => Field.where( section: "about" ).to_a,
+    :work    => Field.where( section: "work" ).to_a,
+    :gear    => Field.where( section: "gear" ).to_a,
+    :contact => Field.where( section: "contact" ).to_a
   }
 
   @title = "Welcome"
-  haml :"pages/index" 
+  haml :"fields/index" 
 end
 
 helpers do
@@ -53,20 +53,16 @@ post "/edit" do
   all_saves_successful = true
 
   new_info.each do |id, text|
-    page = Page.find id
+    field = Field.find id
 
-    if page.body != text
-      page.update_body text
+    if field.body != text
+      field.update_body text
     end
 
-    puts "\n\nPage save ---- #{page.save}\n\n"
-
-    if page.save == false
+    if field.save == false
       all_saves_successful = false
     end
   end
-
-  puts "\n\n Saves????? #{all_saves_successful}\n\n"
 
   if all_saves_successful
     redirect "/edit", :notice => 'Updated Successfully'
@@ -76,10 +72,10 @@ post "/edit" do
 end
 
 get "/edit" do
-  @pages = Page.all
+  @fields = Field.all
 
   @title = "Edit Page"
-  haml :"pages/edit" 
+  haml :"fields/edit" 
 end
 
 get "/blog" do
