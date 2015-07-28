@@ -1,27 +1,28 @@
 /%script{ :src => 'http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js', :type => 'text/javascript', :charset => 'utf-8' }
+%link{ :rel => 'stylesheet', :type => 'text/css', :href => url("/blog_style.css")}
 
-%h1 Blog Page
-%br
-%a{ :href => "/" } Home
-%br
+.blog_content
+  %h1 Blog Page
+  %a.nav_link{ :href => "/" } Home
+  %br
 
-/ posts contain lots of yummy data. some keys include:
-/ - post_url
-/ - date
-/ - title
-/ - body
+  / posts contain lots of yummy data. some keys include:
+  / - post_url
+  / - date
+  / - title
+  / - body
 
-- offset = 10
-%ul
-- @posts.each do | post |
-  %li
-    .blog_post
-      .blog_post_header
-        %h2= post["title"]
-      .blog_post_body
-        %p= post["body"]
-      .blog_post_footer
-        %p= post["date"]
+  - offset = 10
+  %ul
+  - @posts.each do | post |
+    %li.post_item
+      .blog_post
+        .blog_post_header
+          %h2= post["title"]
+        .blog_post_body
+          %p= post["body"]
+        .blog_post_footer
+          %p= post["date"]
 
-- if offset < @total_posts
-  %a{ :href => "" } Older
+  - if offset < @total_posts
+    %a{ :href => "" } Older

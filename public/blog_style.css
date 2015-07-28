@@ -1,0 +1,42 @@
+
+.blog_content
+{
+  color             : black;
+  font-family       : sans-serif;
+}
+.blog_content h1
+{
+  text-align        : center;
+  font-size         : 38px;
+  margin-bottom     : 5px;
+}
+.blog_content .nav_link
+{
+  text-decoration   : none;
+  text-align        : center;
+  margin            : 0px auto;
+  display           : block;
+}
+
+.post_item
+{
+  display           : block;
+}
+.blog_post
+{
+  width             : 60%;
+  display           : block;
+  margin            : 0px auto;
+}
+.blog_post_body figure :first-child
+{
+  margin            : 0px auto;
+  display           : block;
+}
+
+.blog_post_footer
+{
+  font-size         : 10px;
+  color             : gray;
+  text-align        : right;
+}
