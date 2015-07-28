@@ -8,8 +8,8 @@
     %title= @title
     %meta{'http-equiv'=>"Content-Type", :content=>"text/html; charset=iso-8859-1"}/
     %meta{'http-equiv'=>"Content-Language", :content=>"en-us"}/
-    %link{ :rel => 'stylesheet', :type => 'text/css', :href => url("/main_style.css")}
-    %link{ :rel => 'stylesheet', :type => 'text/css', :href => url("/blog_style.css")}
+    / %link{ :rel => 'stylesheet', :type => 'text/css', :href => url("/main_style.css")}
+    / %link{ :rel => 'stylesheet', :type => 'text/css', :href => url("/blog_style.css")}
   %body
     - if flash[:notice]
       %p.alert.alert-success= flash[:notice] 

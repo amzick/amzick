@@ -1,3 +1,5 @@
+%link{ :rel => 'stylesheet', :type => 'text/css', :href => url("/main_style.css")}
+
 .navigation-bar
   %ul
     %li
@@ -52,7 +54,8 @@
       .blog_post_header
         %h2= @latest_post["title"]
       .blog_post_body
-        %p= @latest_post["body"]
+        - body = @latest_post["body"]
+        %p= body[0..1000].gsub(/\s\w+\s*$/, '...</p>')
       .blog_post_footer
         %p= @latest_post["date"]
 
