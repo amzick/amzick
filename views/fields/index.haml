@@ -1,14 +1,19 @@
-.landing.page
+%link{ :rel => 'stylesheet', :type => 'text/css', :href => url("/main_style.css")}
+
+#landing.page
   .info
-    %h1.name AM ZICK
+    %h1 AM ZICK
+    %br
+    %h3.desc
+      Post-Production
+    %br
     %h3.desc
       Production
-      %br
-      Post-Production
-      %br
+    %br
+    %h3.desc
       Sound
 
-.about.page
+#about.page
   %h1 About
   .body
     %p= @fields_map[ :about ][ 0 ].body
@@ -16,7 +21,7 @@
     - vimeo_id = @fields_map[ :about ][ 1 ].body
     %iframe{ :src=>"//player.vimeo.com/video/#{vimeo_id}", :width=>"800", :height=>"450", :frameborder=>"0" }
 
-.work.page
+#work.page
   %h1 Work
   .body
     - @fields_map[ :work ].each do | i |
@@ -24,18 +29,18 @@
       %div{ :class=>"#{ i.name }.view" }
         %p= i.body
 
-.gear.page
+#gear.page
   %h1 Gear
   .body
     %p= @fields_map[ :gear ][ 0 ].body
 
-.contact.page
+#contact.page
   %h1 Contact
   .body
     %p= @fields_map[ :contact ][ 0 ].body
 
 %a{ :href=>"/edit" } Edit
 %br
-%a{ :href=>"/blog" } Blog 
+%a{ :href=>"/blog" } Blog
 
 
