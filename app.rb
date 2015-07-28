@@ -87,22 +87,23 @@ client = Tumblr::Client.new({
   :oauth_token_secret => 'ozyLNwhEUZruJb5CEHHYDq053fgmNzKUyHaGDLL0XPa9cnDrdn'
 })
 
-getPosts = client.posts(:hostname => "aaronmicahzick.tumblr.com", :api_key => "adPBCUStfJLM87SWP7a8DhkZoJMqMpUt8zuR9ohYs1TUKeF6oq", :limit => 10)
+get_posts = client.posts(:hostname => "aaronmicahzick.tumblr.com", :api_key => "adPBCUStfJLM87SWP7a8DhkZoJMqMpUt8zuR9ohYs1TUKeF6oq", :limit => 10)
 
-getPosts.perform do |response|
+#Initialize the posts fetch beforehand, pass the found posts into /blog
+posts = []
+total_posts = 0
+get_posts.perform do |response|
     if response.success?
-        posts = response.parse
-
-        posts["response"]["posts"].each do |post|
-            puts post["post_url"]
-            puts post["date"]
-            puts post["title"]
-            puts post["body"]
-        end
+        parsed_response = response.parse
+        total_posts = parsed_response["response"]["blog"]["posts"]
+        puts parsed_response
+        posts =  parsed_response["response"]["posts"]
     end
 end
 
 get "/blog" do
+    @posts = posts
+    @total_posts = total_posts
     @title = "Blog"
     haml :blog
 end
