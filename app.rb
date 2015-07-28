@@ -27,6 +27,17 @@ class Field < ActiveRecord::Base
 end
 
 helpers do
+  def protected!
+    return if authorized?
+    headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+    halt 401, "Not authorized\n"
+  end
+
+  def authorized?
+    @auth ||=  Rack::Auth::Basic::Request.new(request.env)
+    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['admin', 'admin']
+  end
+
   def title
     if @title
       "#{@title}"
@@ -34,13 +45,10 @@ helpers do
       "Welcome."
     end
   end
-end
 
-helpers do
   include Rack::Utils
   alias_method :h, :escape_html
 end
-
 
 
 ##########################################################
@@ -86,6 +94,11 @@ get_posts = client.posts "aaronmicahzick.tumblr.com", :type => "text"
 
 
 
+get '/protected' do
+  protected!
+  "Welcome, authenticated client"
+end
+
 get "/" do
   @fields_map = {
     :about   => Field.where( section: "about" ).to_a,
@@ -101,6 +114,7 @@ get "/" do
 end
 
 post "/edit" do
+  protected!
   new_info = params
   all_saves_successful = true
 
@@ -124,6 +138,7 @@ post "/edit" do
 end
 
 get "/edit" do
+  protected!
   @fields = Field.all
 
   @title = "Edit Page"
