@@ -1,4 +1,15 @@
-%link{ :rel => 'stylesheet', :type => 'text/css', :href => url("/main_style.css")}
+.navigation-bar
+  %ul
+    %li
+      %a{ :href=>"\#about" } About
+    %li
+      %a{ :href=>"\#work" } Work
+    %li
+      %a{ :href=>"\#gear" } Gear
+    %li
+      %a{ :href=>"/blog" } Blog
+    %li
+      %a{ :href=>"/edit" } Edit
 
 #landing.page
   .info
@@ -34,13 +45,20 @@
   .body
     %p= @fields_map[ :gear ][ 0 ].body
 
+#blog.page
+  %h1 Blog
+  .body
+    .blog_post
+      .blog_post_header
+        %h2= @latest_post["title"]
+      .blog_post_body
+        %p= @latest_post["body"]
+      .blog_post_footer
+        %p= @latest_post["date"]
+
 #contact.page
   %h1 Contact
   .body
     %p= @fields_map[ :contact ][ 0 ].body
-
-%a{ :href=>"/edit" } Edit
-%br
-%a{ :href=>"/blog" } Blog
 
 
