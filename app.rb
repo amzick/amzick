@@ -10,6 +10,8 @@ require 'sinatra/form_helpers'
 
 require 'haml'
 
+require 'tumblr'
+
 enable :sessions
 
 class Field < ActiveRecord::Base
@@ -30,7 +32,7 @@ get "/" do
   }
 
   @title = "Welcome"
-  haml :"fields/index" 
+  haml :"fields/index"
 end
 
 helpers do
@@ -75,9 +77,32 @@ get "/edit" do
   @fields = Field.all
 
   @title = "Edit Page"
-  haml :"fields/edit" 
+  haml :"fields/edit"
+end
+
+client = Tumblr::Client.new({
+  :consumer_key => 'adPBCUStfJLM87SWP7a8DhkZoJMqMpUt8zuR9ohYs1TUKeF6oq',
+  :consumer_secret => '3MgmCEMK24dAByB4EUyyk91w1cjYXUfFqZrFAGipd6axiYckOq',
+  :oauth_token => 'ptmdNi2bW3QVemYEmARK03b4YFceBRnc8b8jOkXeNXEjo4PLMG',
+  :oauth_token_secret => 'ozyLNwhEUZruJb5CEHHYDq053fgmNzKUyHaGDLL0XPa9cnDrdn'
+})
+
+getPosts = client.posts(:hostname => "aaronmicahzick.tumblr.com", :api_key => "adPBCUStfJLM87SWP7a8DhkZoJMqMpUt8zuR9ohYs1TUKeF6oq", :limit => 10)
+
+getPosts.perform do |response|
+    if response.success?
+        posts = response.parse
+
+        posts["response"]["posts"].each do |post|
+            puts post["post_url"]
+            puts post["date"]
+            puts post["title"]
+            puts post["body"]
+        end
+    end
 end
 
 get "/blog" do
-  haml :blog
+    @title = "Blog"
+    haml :blog
 end
