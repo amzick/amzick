@@ -8,8 +8,10 @@
     %title= @title
     %meta{'http-equiv'=>"Content-Type", :content=>"text/html; charset=iso-8859-1"}/
     %meta{'http-equiv'=>"Content-Language", :content=>"en-us"}/
-    / %link{ :rel => 'stylesheet', :type => 'text/css', :href => url("/main_style.css")}
-    / %link{ :rel => 'stylesheet', :type => 'text/css', :href => url("/blog_style.css")}
+    %link{ :rel => 'stylesheet', :type => 'text/css', :href => "/main_style.css" }
+    %link{ :rel => 'stylesheet', :type => 'text/css', :href => "/blog_style.css" }
+    // = css :application
+    // = js :application
   %body
     - if flash[:notice]
       %p.alert.alert-success= flash[:notice] 
@@ -21,6 +23,7 @@
 
 %script{ :src=> "http://code.jquery.com/jquery-1.10.2.min.js" }
 %script{ :src=> "http://getbootstrap.com/dist/js/bootstrap.min.js" }
+%script{ :src=> "/application.js" }
 :javascript
   //** removes alerts after 4 seconds */
   window.setTimeout(function() {

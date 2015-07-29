@@ -9,8 +9,11 @@ gem "sinatra-activerecord"
 gem 'sinatra-flash'
 gem 'sinatra-redirect-with-flash'
 gem 'sinatra-formhelpers-ng'
+
 gem 'compass'
+gem 'sass'
 gem 'haml'
+gem 'coffee-script'
 
 gem 'tumblr_client'
 

@@ -9,6 +9,9 @@ require 'sinatra/redirect_with_flash'
 require 'sinatra/form_helpers'
 
 require 'haml'
+require 'sass'
+require 'compass'
+require 'coffee-script'
 
 require 'tumblr_client'
 
@@ -39,9 +42,11 @@ helpers do
 end
 
 
+
 ##########################################################
-######                   Tumblr                    #######
+######                   TUMBLR                    #######
 ##########################################################
+
 
 
 # Tumblr.configure do |config|
@@ -74,9 +79,11 @@ get_posts = client.posts "aaronmicahzick.tumblr.com"
 # end
 
 
+
 ##########################################################
 ######                   ROUTING                   #######
 ##########################################################
+
 
 
 get "/" do
@@ -88,6 +95,8 @@ get "/" do
   }
 
   @latest_post = get_posts["posts"][0]
+
+  puts "\n\nLatest post:\n\n#{@latest_post}\n\n"
 
   @title = "Welcome"
   haml :"fields/index"
@@ -132,3 +141,12 @@ get "/blog" do
     @title = "Blog"
     haml :blog
 end
+
+get "/:id.css" do
+  sass "stylesheets/#{ params[ :id ] }".to_sym
+end
+
+get "/:id.js" do
+  coffee "javascripts/#{ params[ :id ] }".to_sym
+end
+
