@@ -137,6 +137,7 @@ get "/blog" do
     # @total_posts = total_posts
 
     @posts = get_posts["posts"]
+    puts @posts
     @total_posts = get_posts["total_posts"]
     @title = "Blog"
     haml :blog

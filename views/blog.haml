@@ -15,14 +15,14 @@
   - offset = 10
   %ul
     - @posts.each do | post |
-      %li.post_item
-        .blog_post
-          .blog_post_header
-            %h2= post["title"]
-          .blog_post_body
-            %p= post["body"]
-          .blog_post_footer
-            %p= post["date"]
-
+      - if !post.has_key?("publisher")
+        %li.post_item
+          .blog_post
+            .blog_post_header
+              %h2= post["title"]
+            .blog_post_body
+              %p= post["body"]
+            .blog_post_footer
+              %p= post["date"]
   - if offset < @total_posts
     %a{ :href => "" } Older
