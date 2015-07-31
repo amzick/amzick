@@ -1,22 +1,45 @@
 # application.coffee
+
+# to do : enum
 pages = ['landing','about','work','gear','blog','contact']
 page = 0
 
 $(document).ready ->
-  $('#navigation-bar').css({'top':$(window).height(), 'bottom':'auto'})
-
-
-  # to do : enum
+  navTop = $('#'+pages[1]).position().top - 80
+  $('#navigation-bar').css({'top':navTop, 'bottom':'auto'})
 
   $('#landing').parent().bind 'DOMMouseScroll mousewheel', ->
 
-    if $('.content-pane').is(':animated')
-      return
 
-    if(event.wheelDelta < 0)
-      scrollDown()
-    else
-      scrollUp()
+    if($('#navigation-bar').position().top > 0 && event.wheelDelta < 0)
+      if(!$('#navigation-bar').is(':animated'))
+          $('#navigation-bar').animate({'top': 0})
+
+      # $('#navigation-bar').css({'top': "+=" + event.wheelDelta})
+
+      # if($('#navigation-bar').position().top < 0)
+      #   $('#navigation-bar').css({'top': 0})
+
+    else if($(this).scrollTop() == 0 && event.wheelDelta > 0 && $('#navigation-bar').position().top < navTop)
+      if(!$('#navigation-bar').is(':animated'))
+          $('#navigation-bar').animate({'top': navTop})
+      # $('#navigation-bar').css({'top': "+=" + event.wheelDelta})
+
+      # if($('#navigation-bar').position().top > navTop)
+      #   $('#navigation-bar').css({'top': navTop})
+
+    if($('#navigation-bar').position().top > 0)
+      return false
+
+    # lock scrolling :
+
+    # if $('.content-pane').is(':animated')
+    #   return
+    #
+    # if(event.wheelDelta < 0)
+    #   scrollDown()
+    # else
+    #   scrollUp()
 
 scrollDown = ->
 
@@ -25,16 +48,18 @@ scrollDown = ->
   else if page == 0
     $('#navigation-bar').animate({'top': 0}, 1000)
 
-  $('.content-pane').animate {scrollTop : $('.content-pane').scrollTop() + $('#'+pages[page]).height()},1000, ->
-    page++
+  position = $('#'+pages[page+1]).position()
 
+  $('.content-pane').animate {scrollTop : position.top},1000, ->
+    page++
 
 scrollUp = ->
 
   if page == 0
     return
   else if page == 1
-    $('#navigation-bar').animate({'top': $(window).height()}, 1000)
+    $('#navigation-bar').animate({'top':$('#'+pages[1]).position().top - 80}, 1000)
 
-  $('.content-pane').animate {scrollTop : $('.content-pane').scrollTop() - $('#'+pages[page]).height()},1000, ->
+  position = $('#'+pages[page-1]).position()
+  $('.content-pane').animate {scrollTop : position.top},1000, ->
     page--

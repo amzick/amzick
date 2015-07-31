@@ -96,8 +96,6 @@ get "/" do
 
   @latest_post = get_posts["posts"][0]
 
-  puts "\n\nLatest post:\n\n#{@latest_post}\n\n"
-
   @title = "Welcome"
   haml :"fields/index"
 end
@@ -137,7 +135,6 @@ get "/blog" do
     # @total_posts = total_posts
 
     @posts = get_posts["posts"]
-    puts @posts
     @total_posts = get_posts["total_posts"]
     @title = "Blog"
     haml :blog

@@ -1,5 +1,7 @@
 
 // These are the necessary positioning elements to create those full height sections
+
+
 html
   position          : absolute
   overflow          : hidden
@@ -16,8 +18,16 @@ html
       padding: 0px
     .content-pane
       height            : 100%
-      overflow-y        : hidden
+      overflow-y        : scroll
       overflow-x        : hidden
+
+@-webkit-keyframes backgroundAnimation
+  0%
+    background-color: rgba(255,255,255,0.2)
+  50%
+    background-color: rgba(255,255,255,0.6)
+  100%
+    background-color: rgba(255,255,255,0.2)
 
 #navigation-bar
   position              : fixed
@@ -25,12 +35,13 @@ html
   left                  : 0px
   right                 : 0px
   bottom                : -80px
-  background-color      : white
+  background-color      : rgba(255,255,255,0.2)
   #arrow
-    border-color        : white
+    border-color        : rgba(255,255,255,0.0)
     border-style        : solid
     border-width        : 10px
-    background-color    : white
+    background-color    : rgba(255,255,255,0.2)
+    background-repeat   : no-repeat
     display             : block
     position            : absolute
     left                : -webkit-calc(50% - 100px)
@@ -39,6 +50,8 @@ html
     height              : 60px
     background-image    : url("/images/downArrow.png")
     background-size     : cover
+    -webkit-animation   : backgroundAnimation 2000ms infinite
+
   ul
     li
       display           : inline-block
@@ -46,6 +59,7 @@ html
       width             : 19.75%
       overflow-x: hidden
       a
+        font-style      : italic
         width           : 100%
         height          : 60px
         display         : block
@@ -56,19 +70,18 @@ html
         font-size       : 30px
         padding-top     : 20px
         &:hover
-          color         : gray
-          background-color : black
+          background-color : rgba(255,255,255,0.8)
 // Separate page rules
 .page
   display           : block
   width             : 100%
   min-height        : 100%
   padding           : 0px
+  padding-top       : 80px
   background-size   : cover
 
   &#landing
     background-image  : url("/images/landing_bg.jpg")
-    padding-top: 80px
 
     h3,h2,h1
       background-color: white
