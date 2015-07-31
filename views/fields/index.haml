@@ -1,15 +1,15 @@
 #navigation-bar
   #arrow
   %ul
-    %li
+    %li#about_button.not_current
       %a{ :href=>"\#about" } ABOUT
-    %li
+    %li#work_button.not_current
       %a{ :href=>"\#work" } WORK
-    %li
+    %li#gear_button.not_current
       %a{ :href=>"\#gear" } GEAR
-    %li
+    %li#blog_button.not_current
       %a{ :href=>"/blog" } BLOG
-    %li
+    %li#edit_button.not_current
       %a{ :href=>"/edit" } EDIT
 
 #landing.page
@@ -26,7 +26,6 @@
       Sound
 
 #about.page
-  %h1 About
   .body
     %p= @fields_map[ :about ][ 0 ].body
   .reel

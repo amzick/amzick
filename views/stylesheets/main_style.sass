@@ -51,7 +51,6 @@ html
     background-image    : url("/images/downArrow.png")
     background-size     : cover
     -webkit-animation   : backgroundAnimation 2000ms infinite
-
   ul
     li
       display           : inline-block
@@ -71,6 +70,20 @@ html
         padding-top     : 20px
         &:hover
           background-color : rgba(255,255,255,0.8)
+      &.current
+        background-color: rgba(255,255,255,0.8)
+        -webkit-transition: all 0.5s ease
+        -moz-transition: all 0.5s ease
+        -o-transition: all 0.5s ease
+        -ms-transition: all 0.5s ease
+        transition: all 0.5s ease
+      &.not_current
+        background-color: rgba(255,255,255,0.0)
+        -webkit-transition: all 0.5s ease
+        -moz-transition: all 0.5s ease
+        -o-transition: all 0.5s ease
+        -ms-transition: all 0.5s ease
+        transition: all 0.5s ease
 // Separate page rules
 .page
   display           : block
