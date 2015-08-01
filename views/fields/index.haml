@@ -1,21 +1,24 @@
+#name
+  %h1 AM ZICK
+
+#arrow
+
 #navigation-bar
-  #arrow
   %ul
-    %li#about_button.not_current
-      %a{ :href=>"\#about" } ABOUT
-    %li#work_button.not_current
-      %a{ :href=>"\#work" } WORK
-    %li#gear_button.not_current
-      %a{ :href=>"\#gear" } GEAR
-    %li#blog_button.not_current
-      %a{ :href=>"/blog" } BLOG
+    // in backwards order bc float: right flips them
     %li#edit_button.not_current
       %a{ :href=>"/edit" } EDIT
+    %li#blog_button.not_current
+      %a{ :href=>"/blog" } BLOG
+    %li#gear_button.not_current
+      %a{ :href=>"\#gear" } GEAR
+    %li#work_button.not_current
+      %a{ :href=>"\#work" } WORK
+    %li#about_button.not_current
+      %a{ :href=>"\#about" } ABOUT
 
 #landing.page
   .info
-    %h1 AM ZICK
-    %br
     %h3.desc
       Post-Production
     %br
