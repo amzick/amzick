@@ -5,7 +5,7 @@ pages = ['landing','about','work','gear','blog','contact']
 page = 0
 
 $(document).ready ->
-  navTop = $('#'+pages[1]).position().top - 80
+  navTop = $('#'+pages[1]).position().top
   # $('#navigation-bar').css {
   #   'top': navTop,
   #   'bottom': 'auto'
@@ -59,38 +59,5 @@ $(document).ready ->
       else
         $("#"+cur_page+"_button").removeClass('current')
         $("#"+cur_page+"_button").addClass('not_current')
-
-
-    # lock scrolling :
-    # if $('.content-pane').is(':animated')
-    #   return
-    #
-    # if(event.wheelDelta < 0)
-    #   scrollDown()
-    # else
-    #   scrollUp()
-
-scrollDown = ->
-
-  if page == pages.length - 1
-    return
-  else if page == 0
-    $('#navigation-bar').animate({'top': 0}, 1000)
-
-  position = $('#'+pages[page+1]).position()
-
-  $('.content-pane').animate {scrollTop : position.top},1000, ->
-    page++
-
-scrollUp = ->
-
-  if page == 0
-    return
-  else if page == 1
-    $('#navigation-bar').animate({'top':$('#'+pages[1]).position().top - 80}, 1000)
-
-  position = $('#'+pages[page-1]).position()
-  $('.content-pane').animate {scrollTop : position.top},1000, ->
-    page--
 
 # to do : clicks on nav bar do a scrollTo animation
