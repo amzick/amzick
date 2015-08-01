@@ -6,24 +6,50 @@ page = 0
 
 $(document).ready ->
   navTop = $('#'+pages[1]).position().top - 80
-  $('#navigation-bar').css({'top':navTop, 'bottom':'auto'})
+  # $('#navigation-bar').css {
+  #   'top': navTop,
+  #   'bottom': 'auto'
+  # }
 
-  $('#landing').parent().bind 'DOMMouseScroll mousewheel', ->
+  $('#landing').parent().bind 'DOMMouseScroll mousewheel', (e, delta) ->
 
-    currentPos = $(this).scrollTop()
+    currentPos = this.scrollTop
     currentNavPos = $('#navigation-bar').position().top
-    scrollDown = event.wheelDelta < 0
 
-    if(currentNavPos > 0 && scrollDown)
-      if(!$('#navigation-bar').is(':animated'))
-          $('#navigation-bar').animate({'top': 0})
+    # normalize the wheel delta
+    delta = delta || -e.originalEvent.detail / 3 || e.originalEvent.wheelDelta / 120
+    scrollDown = delta < 0
+    scrollUp   = delta > 0
 
-    else if(currentPos == 0 && !scrollDown && currentNavPos < navTop)
-      if(!$('#navigation-bar').is(':animated'))
-          $('#navigation-bar').animate({'top': navTop})
+    # arrow
+    if currentPos > 10
+      if $('#arrow').css( 'display' ) != 'none'
+        $('#arrow').fadeOut 600
+    else
+      if $('#arrow').css( 'display' ) == 'none'
+        $('#arrow').fadeIn 600
 
-    if(currentNavPos > 0)
-      return false
+    # nav bar scrolling
+
+    $navBar = $('#navigation-bar-container')
+
+    console.log $navBar.css 'top'
+
+    if currentPos > navTop
+      $navBar.addClass 'fixed-to-top'
+    else
+      $navBar.removeClass 'fixed-to-top'
+
+    # name scrolling
+    $name = $('#name')
+
+    if currentPos > 80
+      $name.addClass 'fixed-to-top'
+    else
+      $name.removeClass 'fixed-to-top'
+
+    # if currentNavPos > 0
+    #   return false
 
     # top button handlers
     for cur_page in pages
@@ -66,3 +92,5 @@ scrollUp = ->
   position = $('#'+pages[page-1]).position()
   $('.content-pane').animate {scrollTop : position.top},1000, ->
     page--
+
+# to do : clicks on nav bar do a scrollTo animation
