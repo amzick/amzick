@@ -3,20 +3,6 @@
 
 #arrow
 
-#navigation-bar
-  %ul
-    // in backwards order bc float: right flips them
-    %li#edit_button.not_current
-      %a{ :href=>"/edit" } EDIT
-    %li#blog_button.not_current
-      %a{ :href=>"/blog" } BLOG
-    %li#gear_button.not_current
-      %a{ :href=>"\#gear" } GEAR
-    %li#work_button.not_current
-      %a{ :href=>"\#work" } WORK
-    %li#about_button.not_current
-      %a{ :href=>"\#about" } ABOUT
-
 #landing.page
   .info
     %h3.desc
@@ -28,6 +14,21 @@
     %h3.desc
       Sound
 
+#navigation-bar-container
+  #navigation-bar
+    %ul
+      // in reverse order b/c the float: right CSS rule flips them
+      %li#contact_button.not_current
+        %a{ :href=>"\#contact" } CONTACT
+      %li#blog_button.not_current
+        %a{ :href=>"\#blog" } BLOG
+      %li#gear_button.not_current
+        %a{ :href=>"\#gear" } GEAR
+      %li#work_button.not_current
+        %a{ :href=>"\#work" } WORK
+      %li#about_button.not_current
+        %a{ :href=>"\#about" } ABOUT
+
 #about.page
   .body
     %p= @fields_map[ :about ][ 0 ].body
@@ -36,7 +37,7 @@
     %iframe{ :src=>"//player.vimeo.com/video/#{vimeo_id}", :width=>"800", :height=>"450", :frameborder=>"0" }
 
 #work.page
-  %h1 Work
+  / %h1 Work
   .body
     - @fields_map[ :work ].each do | i |
       %h4= i.name
@@ -44,12 +45,12 @@
         %p= i.body
 
 #gear.page
-  %h1 Gear
+  / %h1 Gear
   .body
     %p= @fields_map[ :gear ][ 0 ].body
 
 #blog.page
-  %h1 Blog
+  / %h1 Blog
   .body
     .blog_post
       .blog_post_header
@@ -61,10 +62,14 @@
         // %p= body[0..1000].gsub(/\s\w+\s*$/, '...</p>')
       .blog_post_footer
         %p= @latest_post["date"]
+  .see-all
+    %a{ :href => "/blog" } See all posts...
 
 #contact.page
-  %h1 Contact
+  / %h1 Contact
   .body
     %p= @fields_map[ :contact ][ 0 ].body
+
+%a{ :href => "/edit" } Edit page
 
 

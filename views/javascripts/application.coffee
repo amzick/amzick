@@ -6,14 +6,14 @@ page = 0
 
 $(document).ready ->
   navTop = $('#'+pages[1]).position().top - 80
-  $('#navigation-bar').css({'top':navTop, 'bottom':'auto'})
+  # $('#navigation-bar').css {
+  #   'top': navTop,
+  #   'bottom': 'auto'
+  # }
 
   $('#landing').parent().bind 'DOMMouseScroll mousewheel', (e, delta) ->
 
-    if $('#arrow').css( 'display' ) != 'none'
-      $('#arrow').fadeOut()
-
-    currentPos = $(this).scrollTop()
+    currentPos = this.scrollTop
     currentNavPos = $('#navigation-bar').position().top
 
     # normalize the wheel delta
@@ -21,43 +21,35 @@ $(document).ready ->
     scrollDown = delta < 0
     scrollUp   = delta > 0
 
-    console.log currentPos
-    console.log currentNavPos
+    # arrow
+    if currentPos > 10
+      if $('#arrow').css( 'display' ) != 'none'
+        $('#arrow').fadeOut 600
+    else
+      if $('#arrow').css( 'display' ) == 'none'
+        $('#arrow').fadeIn 600
 
     # nav bar scrolling
 
-    if(currentNavPos > 0 && scrollDown)
-      if(!$('#navigation-bar').is(':animated'))
-        # newTop = currentNavPos - event.wheelDeltas
-        # $('#navigation-bar').animate({'top': newTop})
-        $('#navigation-bar').animate({'top': 0})
+    $navBar = $('#navigation-bar-container')
 
-    else if(currentPos == 0 && !scrollDown && currentNavPos < navTop)
-      if(!$('#navigation-bar').is(':animated'))
-        $('#navigation-bar').animate({'top': navTop})
+    console.log $navBar.css 'top'
 
-    # if !$('#navigation-bar').is(':animated') 
-    #   if currentPos > navTop 
-    #     $('#navigation-bar').css({'top':navTop, 'bottom':'auto'})
-    #   else
-    #     if currentPos > 0 && scrollDown 
-    #       $('#navigation-bar').animate({'top': "-=" + delta})
-    #     if currentPos > 0 && scrollUp
-    #       $('#navigation-bar').animate({'top': "+=" + delta})
+    if currentPos > navTop
+      $navBar.addClass 'fixed-to-top'
+    else
+      $navBar.removeClass 'fixed-to-top'
 
     # name scrolling
+    $name = $('#name')
 
-    if !$('#name').is(':animated') 
-      if currentPos > 80
-        $('#name').css({'padding-top': "0px"})
-      else
-        if currentPos > 0 && scrollDown 
-          $('#name').animate({'padding-top': "-=" + delta})
-        if currentPos > 0 && scrollUp
-          $('#name').animate({'padding-top': "+=" + delta})
+    if currentPos > 80
+      $name.addClass 'fixed-to-top'
+    else
+      $name.removeClass 'fixed-to-top'
 
-    if(currentNavPos > 0)
-      return false
+    # if currentNavPos > 0
+    #   return false
 
     # top button handlers
     for cur_page in pages

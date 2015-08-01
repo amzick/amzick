@@ -1,12 +1,14 @@
-
 // These are the necessary positioning elements to create those full height sections
 
+html, body 
+  height: 100%
+  padding: 0
+  margin: 0
 
 html
   position          : absolute
   overflow          : hidden
   height            : 100%
-
   body
     height            : 100%
     margin            : 0px !important
@@ -30,16 +32,19 @@ html
     background-color: rgba(255,255,255,0.2)
 
 #name
-  position: fixed
   width: 27.5%
   padding-top: 80px
   float: left
   h1
+    width: 100%
+    padding: 5px 0px 5px 0px
     background-color: white
     display: inline-block
-    padding: 5px 20px
     font-style: italic
     font-size: 70px
+  &.fixed-to-top
+    position: fixed
+    padding-top: 0px
 
 #arrow
   border-color        : rgba(255,255,255,0.0)
@@ -57,59 +62,71 @@ html
   background-size     : cover
   -webkit-animation   : backgroundAnimation 2000ms infinite
 
-#navigation-bar
-  position              : fixed
-  height                : 80px
-  left                  : 0px
-  right                 : 0px
-  bottom                : -80px
-  ul
-    li
-      display           : inline-block
-      height            : 100%
-      width             : 14.5%
-      overflow-x: hidden
-      float: right
-      a
-        font-style      : italic
-        width           : 100%
-        height          : 64px
-        display         : block
-        text-decoration : none
-        color           : black
-        text-align      : center
-        font-size       : 30px
-        padding-top     : 27px
-        &:hover
-          background-color : rgba(255,255,255,0.8)
-      &.current
-        background-color: rgba(0,0,0, 1)
-        -webkit-transition: all 0.5s ease
-        -moz-transition: all 0.5s ease
-        -o-transition: all 0.5s ease
-        -ms-transition: all 0.5s ease
-        transition: all 0.5s ease
+#navigation-bar-container
+  position: relative
+  height: 80px
+  bottom: auto
+  width: 72.5%
+  float: right
+  &.fixed-to-top
+    position: fixed
+    top: 0px
+    margin-left: 27.5%
+  #navigation-bar
+    position              : absolute
+    left                  : 0px
+    right                 : 0px
+    // &.fixed-to-top
+    //   position: fixed
+    //   top: 0px
+    ul
+      font-size: 0px
+      li
+        display           : inline-block
+        height            : 100%
+        width             : 20%
+        overflow-x: hidden
+        float: right
         a
-          color: white
+          font-style      : italic
+          width           : 100%
+          height          : 64px
+          display         : block
+          text-decoration : none
+          color           : black
+          text-align      : center
+          font-size       : 30px
+          padding-top     : 27px
+          &:hover
+            background-color : rgba(255,255,255,0.8)
+        &.current
+          background-color: rgba(0,0,0, 1)
           -webkit-transition: all 0.5s ease
           -moz-transition: all 0.5s ease
           -o-transition: all 0.5s ease
           -ms-transition: all 0.5s ease
           transition: all 0.5s ease
-      &.not_current
-        background-color: rgba(255,255,255, 1)
-        -webkit-transition: all 0.5s ease
-        -moz-transition: all 0.5s ease
-        -o-transition: all 0.5s ease
-        -ms-transition: all 0.5s ease
-        transition: all 0.5s ease
-        a
-          color: black
+          a
+            color: white
+            -webkit-transition: all 0.5s ease
+            -moz-transition: all 0.5s ease
+            -o-transition: all 0.5s ease
+            -ms-transition: all 0.5s ease
+            transition: all 0.5s ease
+        &.not_current
+          background-color: rgba(255,255,255, 1)
           -webkit-transition: all 0.5s ease
           -moz-transition: all 0.5s ease
           -o-transition: all 0.5s ease
           -ms-transition: all 0.5s ease
           transition: all 0.5s ease
+          a
+            color: black
+            -webkit-transition: all 0.5s ease
+            -moz-transition: all 0.5s ease
+            -o-transition: all 0.5s ease
+            -ms-transition: all 0.5s ease
+            transition: all 0.5s ease
 
 // Separate page rules
 
