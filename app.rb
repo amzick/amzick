@@ -150,3 +150,16 @@ get "/:id.js" do
   coffee "javascripts/#{ params[ :id ] }".to_sym
 end
 
+not_found { haml :'404' }
+error { haml :'500' }
+
+__END__
+
+@@404
+%h3 404
+%p It seems this page is missing...
+
+@@505
+%h3 505 Error
+%p Something's gone wrong...
+
