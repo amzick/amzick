@@ -11,6 +11,10 @@ $(document).ready ->
   #   'bottom': 'auto'
   # }
 
+  $(window).resize ->
+    console.log('resizing')
+    navTop = $('#'+pages[1]).position().top
+
   $('#landing').parent().bind 'DOMMouseScroll mousewheel', (e, delta) ->
 
     currentPos = this.scrollTop
