@@ -16,18 +16,20 @@
 
 #navigation-bar-container
   #navigation-bar
-    %ul
-      // in reverse order b/c the float: right CSS rule flips them
-      %li#contact_button.not_current
-        %a{ :href=>"\#contact" } CONTACT
-      %li#blog_button.not_current
-        %a{ :href=>"\#blog" } BLOG
-      %li#gear_button.not_current
-        %a{ :href=>"\#gear" } GEAR
-      %li#work_button.not_current
-        %a{ :href=>"\#work" } WORK
-      %li#about_button.not_current
-        %a{ :href=>"\#about" } ABOUT
+    #navigation-buffer
+    #navigation-list
+      %ul
+        // in reverse order b/c the float: right CSS rule flips them
+        %li#contact_button.not_current
+          %a{ :href=>"\#contact" } CONTACT
+        %li#blog_button.not_current
+          %a{ :href=>"\#blog" } BLOG
+        %li#gear_button.not_current
+          %a{ :href=>"\#gear" } GEAR
+        %li#work_button.not_current
+          %a{ :href=>"\#work" } WORK
+        %li#about_button.not_current
+          %a{ :href=>"\#about" } ABOUT
 
 #about.page
   .body
@@ -39,10 +41,13 @@
 #work.page
   / %h1 Work
   .body
-    - @fields_map[ :work ].each do | i |
-      %h4= i.name
-      %div{ :class=>"#{ i.name }.view" }
-        %p= i.body
+    %table
+      %tr
+        - @fields_map[ :work ].each do | i |
+          %td
+            %a= i.name
+      / %div{ :class=>"#{ i.name }.view" }
+      /   %p= i.body
 
 #gear.page
   / %h1 Gear
