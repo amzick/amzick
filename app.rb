@@ -96,6 +96,8 @@ get "/" do
 
   @latest_post = get_posts["posts"][0]
 
+  puts @latest_post
+
   @title = "Welcome"
   haml :"fields/index"
 end

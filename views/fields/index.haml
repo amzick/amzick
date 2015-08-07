@@ -59,16 +59,22 @@
   .body
     .blog_post
       .blog_post_header
-        %h2= @latest_post["title"]
+        - if(@latest_post["title"])
+          %h2= @latest_post["title"]
       .blog_post_body
-        // - body = @latest_post["body"]
+        - if(@latest_post["type"] == "video")
+          - video = @latest_post["player"][2]["embed_code"]
+          #video_insert= video
+        - if(@latest_post["reblog"])
+          - body = @latest_post["trail"][0]["content"]
+          %p= body
         // - body = @latest_post["content"]
         // - puts "\n\nBody:\n\n#{body}\n\n"
         // %p= body[0..1000].gsub(/\s\w+\s*$/, '...</p>')
       .blog_post_footer
         %p= @latest_post["date"]
-  .see-all
-    %a{ :href => "/blog" } See all posts...
+    #see-all
+      %a{ :href => "/blog" } continue reading...
 
 #contact.page
   / %h1 Contact
