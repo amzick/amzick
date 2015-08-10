@@ -8,7 +8,6 @@ addEmailLink = ->
     $("#email").replaceWith "<a href='mailto:" + emailAddress + "'>" + emailAddress + "</a>"
 
 # to do : enum
-
 pages = ['landing','about','work','gear','blog','contact']
 page = 0
 
