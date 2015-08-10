@@ -46,11 +46,19 @@ html
   100%
     background-color: rgba(255,255,255,0.2)
 
+@-webkit-keyframes goFull
+  100%
+    width : 100%
+@-webkit-keyframes goShort
+  100%
+    width : 350px
+
 #name
-  width: 25%
+  width: 350px
   padding-top: 80px
   float: left
-  min-width: 340px
+  z-index: 10
+
   h1
     width: 100%
     padding: 5px 0px 5px 0px
@@ -62,6 +70,8 @@ html
   &.fixed-to-top
     position: fixed
     padding-top: 0px
+    @media screen and (max-width: 880px)
+      -webkit-animation   : goFull 500ms forwards
 
 #arrow
   border-color        : rgba(255,255,255,0.0)
@@ -85,41 +95,64 @@ html
   bottom: auto
   width: 100%
   float: right
+  @media screen and (max-width: 880px)
+    height : 30px
+
   &.fixed-to-top
     position  : fixed
     top       : 0px
-    width     : 98.95%
+    right     : 15px
+    width     : 100%
     box-shadow: -1px 2px 5px 0px rgba(0,0,0,.2)
+    @media screen and (max-width: 880px)
+      top     : 91px
   #navigation-bar
     position              : absolute
     left                  : 0px
     right                 : 0px
     #navigation-buffer
-      width : 25.25%
-      min-width : 340px
+      width : 350px
       height : 91px
       display: inline-block
       float : left
+      @media screen and (max-width: 880px)
+        height : 0px
+        width : 100%
+        background-color : white
+        z-index: 5
+
     #navigation-list
       overflow : auto
+      @media screen and (max-width: 880px)
+        overflow : visible
       ul
         font-size: 0px
         li
           display           : inline-block
-          height            : 100%
+          height            : 91px
           width             : 20%
           overflow-x: hidden
           float: right
+          @media screen and (max-width: 880px)
+            font-size     : 15px !important
+            padding-top   : 7px
+            height        : 30px
           a
             font-style      : italic
             width           : 100%
-            height          : 64px
             display         : block
             text-decoration : none
             color           : black
             text-align      : center
             font-size       : 30px
             padding-top     : 27px
+            @media screen and (max-width: 1200px)
+              font-size     : 19px !important
+              padding-top   : 30px
+            @media screen and (max-width: 880px)
+              font-size     : 15px !important
+              padding-top   : 3px
+
           &.current
             background-color: rgba(0,0,0, 1)
             @include simpleEase
