@@ -1,4 +1,15 @@
 # application.coffee
+<<<<<<< HEAD
+=======
+
+addEmailLink = ->
+  if $("#email") != null
+    userName     = "aaron.zick"
+    hostName     = "gmail.com"
+    emailAddress = userName + "@" + hostName
+    $("#email").replaceWith "<a href='mailto:" + emailAddress + "'>" + emailAddress + "</a>"
+
+>>>>>>> d2efa15d8af90b10c406c09f0402813af78cce64
 # to do : enum
 
 pages = ['landing','about','work','gear','blog','contact']
@@ -6,6 +17,8 @@ page = 0
 
 $(document).ready ->
   navTop = $('#'+pages[1]).position().top
+
+  addEmailLink()
 
   $(window).resize ->
     navTop = $(window).height() + 171

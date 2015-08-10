@@ -250,23 +250,36 @@ html
       @include basicBody(500px)
       .blog_post
         height : 95%
-        h2
-          padding-left : 0px
+        .blog_post_header
+          text-align: center
+          margin-bottom: 5px  
+          h2
+            padding-left : 0px
         .blog_post_body
+          margin-left: 40px
+          margin-right: 40px
           #video_insert
             margin-bottom: 20px
             iframe
               display: block
               margin : 0px auto
       #see-all
-        float: right
+        text-align: center
         a
-          color : black
+          color : grey
           text-decoration : none
+          @include simpleEase()
           &:hover
-            color : gray
+            color : black
 
   &#contact
     background-image  : url("/images/contact_bg.jpg")
     .body
       @include basicBody(500px)
+      text-align: center
+      a
+        text-decoration: none
+        color: gray
+        @include simpleEase()
+        &:hover
+          color: black
