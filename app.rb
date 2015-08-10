@@ -64,7 +64,7 @@ client = Tumblr::Client.new({
 # get_posts is a hash with keys "blog" (for general blog info), "posts" (an array of the posts), and "total_posts" (integer)
 
 # get_posts = client.posts(:hostname => "aaronmicahzick.tumblr.com", :api_key => "adPBCUStfJLM87SWP7a8DhkZoJMqMpUt8zuR9ohYs1TUKeF6oq", :limit => 10)
-get_posts = client.posts "aaronmicahzick.tumblr.com"
+get_posts = client.posts "aaronmicahzick.tumblr.com", :type => "text"
 
 #Initialize the posts fetch beforehand, pass the found posts into /blog
 # posts = []
@@ -133,9 +133,6 @@ get "/edit" do
 end
 
 get "/blog" do
-    # @posts = posts
-    # @total_posts = total_posts
-
     @posts = get_posts["posts"]
     @total_posts = get_posts["total_posts"]
     @title = "Blog"

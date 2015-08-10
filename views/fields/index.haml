@@ -39,7 +39,6 @@
     %iframe{ :src=>"//player.vimeo.com/video/#{vimeo_id}", :width=>"800", :height=>"450", :frameborder=>"0" }
 
 #work.page
-  / %h1 Work
   .body
     %table
       %tr
@@ -50,34 +49,31 @@
       /   %p= i.body
 
 #gear.page
-  / %h1 Gear
   .body
     %p= @fields_map[ :gear ][ 0 ].body
 
 #blog.page
-  / %h1 Blog
   .body
     .blog_post
       .blog_post_header
         - if(@latest_post["title"])
           %h2= @latest_post["title"]
       .blog_post_body
-        - if(@latest_post["type"] == "video")
-          - video = @latest_post["player"][2]["embed_code"]
-          #video_insert= video
-        - if(@latest_post["reblog"])
-          - body = @latest_post["trail"][0]["content"]
-          %p= body
-        // - body = @latest_post["content"]
-        // - puts "\n\nBody:\n\n#{body}\n\n"
-        // %p= body[0..1000].gsub(/\s\w+\s*$/, '...</p>')
+        / - if(@latest_post["type"] == "video")
+        /   - video = @latest_post["player"][2]["embed_code"]
+        /   #video_insert= video
+        / - if(@latest_post["reblog"])
+        /   - body = @latest_post["trail"][0]["content"]
+        /   %p= body
+        - body = @latest_post["body"]
+        - puts "\n\nBody:\n\n#{body}\n\n"
+        %p= body[0..1000].gsub(/\s\w+\s*$/, '...</p>')
       .blog_post_footer
         %p= @latest_post["date"]
     #see-all
       %a{ :href => "/blog" } continue reading...
 
 #contact.page
-  / %h1 Contact
   .body
     %p= @fields_map[ :contact ][ 0 ].body
 
