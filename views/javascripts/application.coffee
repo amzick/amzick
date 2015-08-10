@@ -1,5 +1,12 @@
 # application.coffee
 
+addEmailLink = ->
+  if $("#email") != null
+    userName     = "aaron.zick"
+    hostName     = "gmail.com"
+    emailAddress = userName + "@" + hostName
+    $("#email").replaceWith "<a href='mailto:" + emailAddress + "'>" + emailAddress + "</a>"
+
 # to do : enum
 pages = ['landing','about','work','gear','blog','contact']
 page = 0
@@ -10,6 +17,8 @@ $(document).ready ->
   #   'top': navTop,
   #   'bottom': 'auto'
   # }
+
+  addEmailLink()
 
   $(window).resize ->
     console.log('resizing')
