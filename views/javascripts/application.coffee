@@ -1,6 +1,4 @@
 # application.coffee
-<<<<<<< HEAD
-=======
 
 addEmailLink = ->
   if $("#email") != null
@@ -9,7 +7,6 @@ addEmailLink = ->
     emailAddress = userName + "@" + hostName
     $("#email").replaceWith "<a href='mailto:" + emailAddress + "'>" + emailAddress + "</a>"
 
->>>>>>> d2efa15d8af90b10c406c09f0402813af78cce64
 # to do : enum
 
 pages = ['landing','about','work','gear','blog','contact']
