@@ -14,30 +14,32 @@
     %h3.desc
       Sound
 
-#navigation-bar-container
-  #navigation-bar
-    #navigation-buffer
-    #navigation-list
-      %ul
-        // in reverse order b/c the float: right CSS rule flips them
-        %li#contact_button.not_current
-          %a{ :href=>"\#contact" } CONTACT
-        %li#blog_button.not_current
-          %a{ :href=>"\#blog" } BLOG
-        %li#gear_button.not_current
-          %a{ :href=>"\#gear" } GEAR
-        %li#work_button.not_current
-          %a{ :href=>"\#work" } WORK
-        %li#about_button.not_current
-          %a{ :href=>"\#about" } ABOUT
+
 
 #about.page
   .body
+    #navigation-bar-container
+      #navigation-bar
+        #navigation-buffer
+        #navigation-list
+          %ul
+            // in reverse order b/c the float: right CSS rule flips them
+            %li#contact_button.not_current
+              %a{ :href=>"\#contact" } CONTACT
+            %li#blog_button.not_current
+              %a{ :href=>"\#blog" } BLOG
+            %li#gear_button.not_current
+              %a{ :href=>"\#gear" } GEAR
+            %li#work_button.not_current
+              %a{ :href=>"\#work" } WORK
+            %li#about_button.not_current
+              %a{ :href=>"\#about" } ABOUT
+    #placeholder_nav_div
     %p= @fields_map[ :about ][ 0 ].body
-  .reel
-    - vimeo_id = @fields_map[ :about ][ 1 ].body
-    %iframe{ :src=>"//player.vimeo.com/video/#{vimeo_id}", :width=>"800", :height=>"450", :frameborder=>"0" }
-
+    .reel
+      - vimeo_id = @fields_map[ :about ][ 1 ].body
+      %iframe{ :src=>"//player.vimeo.com/video/#{vimeo_id}", :width=>"800", :height=>"450", :frameborder=>"0" }
+    .cleardiv
 #work.page
   .body
     %table
