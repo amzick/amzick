@@ -56,12 +56,6 @@ end
 ##########################################################
 
 
-
-# Tumblr.configure do |config|
-#   config.consumer_key = "adPBCUStfJLM87SWP7a8DhkZoJMqMpUt8zuR9ohYs1TUKeF6oq"
-#   config.consumer_secret = "3MgmCEMK24dAByB4EUyyk91w1cjYXUfFqZrFAGipd6axiYckOq"
-# end
-
 client = Tumblr::Client.new({
     :consumer_key => 'adPBCUStfJLM87SWP7a8DhkZoJMqMpUt8zuR9ohYs1TUKeF6oq',
     :consumer_secret => '3MgmCEMK24dAByB4EUyyk91w1cjYXUfFqZrFAGipd6axiYckOq',
@@ -69,22 +63,7 @@ client = Tumblr::Client.new({
     :oauth_token_secret => 'ozyLNwhEUZruJb5CEHHYDq053fgmNzKUyHaGDLL0XPa9cnDrdn'
   })
 
-# get_posts is a hash with keys "blog" (for general blog info), "posts" (an array of the posts), and "total_posts" (integer)
-
-# get_posts = client.posts(:hostname => "aaronmicahzick.tumblr.com", :api_key => "adPBCUStfJLM87SWP7a8DhkZoJMqMpUt8zuR9ohYs1TUKeF6oq", :limit => 10)
 get_posts = client.posts "aaronmicahzick.tumblr.com", :type => "text"
-
-#Initialize the posts fetch beforehand, pass the found posts into /blog
-# posts = []
-# total_posts = 0
-# get_posts.perform do |response|
-#     if response.success?
-#         parsed_response = response.parse
-#         total_posts = parsed_response["response"]["blog"]["posts"]
-#         puts parsed_response
-#         posts =  parsed_response["response"]["posts"]
-#     end
-# end
 
 
 ##########################################################
