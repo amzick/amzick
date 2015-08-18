@@ -87,17 +87,10 @@ get_posts = client.posts "aaronmicahzick.tumblr.com", :type => "text"
 # end
 
 
-
 ##########################################################
 ######                   ROUTING                   #######
 ##########################################################
 
-
-
-get '/protected' do
-  protected!
-  "Welcome, authenticated client"
-end
 
 get "/" do
   @fields_map = {
