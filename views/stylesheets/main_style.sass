@@ -237,13 +237,18 @@ html
       table
         width : 100%
         height: 80px
-        border-bottom: solid
-        border-width : 1px
-        border-color : rgba(0,0,0,.2)
+        // border-bottom: solid
+        // border-width : 1px
+        // border-color : rgba(0,0,0,.2)
         table-layout : fixed
         -webkit-border-vertical-spacing: 0px
         -webkit-border-horizontal-spacing: 0px
         td
+          @include simpleEase()
+          &.selected
+            background-color : black
+            color : white
+            cursor: default
           &:hover
             background-color : black
             color : white
@@ -254,6 +259,18 @@ html
             display : block
             font-weight : bold
             font-size : 20px
+      .work-page-view
+        width: 100%
+        display: block
+        &.hidden
+          display: none
+        p
+          margin: 20px auto 5px
+          padding: 20px
+
+          width: 70%
+          display:block
+          background-color : white
 
 
   &#gear

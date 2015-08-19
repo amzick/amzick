@@ -7,6 +7,28 @@ addEmailLink = ->
     emailAddress = userName + "@" + hostName
     $("#email").replaceWith "<a href='mailto:" + emailAddress + "'>" + emailAddress + "</a>"
 
+workPageSwitcher = ->
+  # change CSS classes of buttons
+
+
+  # switch page
+
+switchPage = ( pageToShow ) ->
+  pageToHide = $('.work-page-button.selected').attr 'id'
+
+  console.log pageToShow
+  $( "[page='" + pageToHide + "'" ).fadeOut 500, ->
+      $( "[page='" + pageToShow + "'" ).fadeIn 500, ->
+        $( "[page='" + pageToShow + "'" ).removeClass 'hidden'
+      $( "[page='" + pageToHide + "'" ).addClass 'hidden'
+
+  $selected = $('.selected')
+
+  if $selected != null
+    $selected.removeClass 'selected'
+
+  $("##{pageToShow}").addClass 'selected'
+
 # to do : enum
 pages = ['landing','about','work','gear','blog','contact']
 page = 0
@@ -15,6 +37,10 @@ $(document).ready ->
   navTop = $('#'+pages[1]).position().top
 
   addEmailLink()
+
+  $('.work-page-button').on 'click', (e) ->
+    e.preventDefault()
+    switchPage( $(this).attr 'id' )
 
   $(window).resize ->
     navTop = $(window).height() + 171
@@ -25,7 +51,7 @@ $(document).ready ->
     handleScrollCase $(this).scrollTop()
 
 
-  $('#landing').parent().bind 'DOMMouseScroll mousewheel', (e, delta) ->
+  # $('#landing').parent().bind 'DOMMouseScroll mousewheel', (e, delta) ->
     # handleScrollCase this.scrollTop
 
   handleScrollCase = ( top ) ->

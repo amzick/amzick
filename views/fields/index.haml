@@ -40,15 +40,17 @@
       - vimeo_id = @fields_map[ :about ][ 1 ].body
       %iframe{ :src=>"//player.vimeo.com/video/#{vimeo_id}", :width=>"800", :height=>"450", :frameborder=>"0" }
     .cleardiv
+
 #work.page
   .body
     %table
       %tr
         - @fields_map[ :work ].each do | i |
-          %td
+          %td{ :id => "#{i.name.downcase.gsub( / /, '-')}", :class => "work-page-button #{ if i.name == 'Production Sound' then 'selected' end }" }
             %a= i.name
-      / %div{ :class=>"#{ i.name }.view" }
-      /   %p= i.body
+    - @fields_map[ :work ].each do | i |
+      %div{ :class=>"work-page-view #{ if i.name != 'Production Sound' then 'hidden' end }", :page => "#{i.name.downcase.gsub( / /, '-')}" }
+        %p= i.body
 
 #gear.page
   .body
