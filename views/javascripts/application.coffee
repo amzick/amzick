@@ -7,12 +7,6 @@ addEmailLink = ->
     emailAddress = userName + "@" + hostName
     $("#email").replaceWith "<a href='mailto:" + emailAddress + "'>" + emailAddress + "</a>"
 
-workPageSwitcher = ->
-  # change CSS classes of buttons
-
-
-  # switch page
-
 switchPage = ( pageToShow ) ->
   pageToHide = $('.work-page-button.selected').attr 'id'
 
@@ -29,6 +23,9 @@ switchPage = ( pageToShow ) ->
 
   $("##{pageToShow}").addClass 'selected'
 
+displayArrow = ->
+  $("#arrow").delay( 700 ).animate { 'top': "#{$(window).height() - 54}px" }, 500
+
 # to do : enum
 pages = ['landing','about','work','gear','blog','contact']
 page = 0
@@ -38,18 +35,18 @@ $(document).ready ->
 
   addEmailLink()
 
-  $('.work-page-button').on 'click', (e) ->
-    e.preventDefault()
-    switchPage( $(this).attr 'id' )
+  displayArrow()
 
   $(window).resize ->
     navTop = $(window).height() + 171
-
     handleScrollCase $('#landing').parent().scrollTop()
 
   $('#landing').parent().scroll ->
     handleScrollCase $(this).scrollTop()
 
+  $('.work-page-button').on 'click', (e) ->
+    e.preventDefault()
+    switchPage( $(this).attr 'id' )
 
   # $('#landing').parent().bind 'DOMMouseScroll mousewheel', (e, delta) ->
     # handleScrollCase this.scrollTop
