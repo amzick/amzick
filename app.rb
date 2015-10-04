@@ -91,7 +91,7 @@ get "/" do
 
     youtube_id = split_s[1][i_1..i_2]
 
-    new_iframe = '<iframe id="youtube_iframe" src="https://www.youtube.com/embed/' + youtube_id + '?feature=oembed&amp;wmode=opaque" allowfullscreen="allowfullscreen" frameborder="0" height="405" width="540"></iframe>'
+    new_iframe = '<iframe id="youtube_iframe" src="https://www.youtube.com/embed/' + youtube_id + '?feature=oembed&amp;wmode=opaque" allowfullscreen="allowfullscreen" frameborder="0" height="200" width="356"></iframe>'
     body = split_s[0] + new_iframe
   end
 

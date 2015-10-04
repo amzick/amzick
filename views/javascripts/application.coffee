@@ -26,12 +26,19 @@ switchPage = ( pageToShow ) ->
 displayArrow = ->
   $("#arrow").delay( 700 ).animate { 'top': "#{$(window).height() - 54}px" }, 500
 
-fixYoutubeEmbed = ->
-  $youtube = $("#youtube_iframe")
-  w = $("#blog .blog_post_body").width()
-  h = 9/16 * w
-  $youtube.attr 'width', w
-  $youtube.attr 'height', h
+# fixYoutubeEmbed = ->
+  # $youtube = $("#youtube_iframe")
+  # # w = $("#blog .blog_post_body").width()
+  # # h = 9/16 * w
+  # # $youtube.attr 'width', w
+  # # $youtube.attr 'height', h
+
+
+  # $( "#blog .body" ).height() - $("#see-all").height()
+  
+  # w = 16/9 * h
+  # $youtube.attr 'width', w
+  # $youtube.attr 'height', h
 
 # to do : enum
 pages = ['landing','about','work','gear','blog','contact']
@@ -42,7 +49,7 @@ $(document).ready ->
 
   addEmailLink()
   displayArrow()
-  fixYoutubeEmbed()
+  # fixYoutubeEmbed()
 
   $(window).resize ->
     navTop = $(window).height() + 171
