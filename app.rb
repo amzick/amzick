@@ -81,7 +81,23 @@ get "/" do
 
   @latest_post = get_posts["posts"][0]
 
-  @title = "Welcome"
+  body = @latest_post["body"]
+
+  if body.include? "<figure data-url"
+    split_s = body.split "<figure data-url"
+
+    i_1 = split_s[1].index( "www.youtube.com/embed/" ) + "www.youtube.com/embed/".length
+    i_2 = split_s[1].index( "?feature=" ) - 1
+
+    youtube_id = split_s[1][i_1..i_2]
+
+    new_iframe = '<iframe id="youtube_iframe" src="https://www.youtube.com/embed/' + youtube_id + '?feature=oembed&amp;wmode=opaque" allowfullscreen="allowfullscreen" frameborder="0" height="405" width="540"></iframe>'
+    body = split_s[0] + new_iframe
+  end
+
+  @latest_post["body"] = body
+
+  @title = "AM ZICK"
   haml :"fields/index"
 end
 

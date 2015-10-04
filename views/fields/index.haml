@@ -68,7 +68,7 @@
           %p#date= Time.parse( @latest_post["date"] ).strftime("%B %e, %Y")
       .blog_post_body
         - body = @latest_post["body"]
-        - puts "\n\nBody:\n\n#{body}\n\n"
+        - puts body
         %p= body[0..1000].gsub(/\s\w+\s*$/, '...</p>')
     #see-all
       %a{ :href => "//http://aaronmicahzick.tumblr.com/" } Continue reading...
@@ -77,6 +77,5 @@
   .body
     %p= @fields_map[ :contact ][ 0 ].body
 
-/ %a{ :href => "/edit" } Edit page
 
 

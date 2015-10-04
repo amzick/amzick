@@ -11,8 +11,8 @@ switchPage = ( pageToShow ) ->
   pageToHide = $('.work-page-button.selected').attr 'id'
 
   console.log pageToShow
-  $( "[page='" + pageToHide + "'" ).fadeOut 500, ->
-      $( "[page='" + pageToShow + "'" ).fadeIn 500, ->
+  $( "[page='" + pageToHide + "'" ).fadeOut 100, ->
+      $( "[page='" + pageToShow + "'" ).fadeIn 100, ->
         $( "[page='" + pageToShow + "'" ).removeClass 'hidden'
       $( "[page='" + pageToHide + "'" ).addClass 'hidden'
 
@@ -26,6 +26,13 @@ switchPage = ( pageToShow ) ->
 displayArrow = ->
   $("#arrow").delay( 700 ).animate { 'top': "#{$(window).height() - 54}px" }, 500
 
+fixYoutubeEmbed = ->
+  $youtube = $("#youtube_iframe")
+  w = $("#blog .blog_post_body").width()
+  h = 9/16 * w
+  $youtube.attr 'width', w
+  $youtube.attr 'height', h
+
 # to do : enum
 pages = ['landing','about','work','gear','blog','contact']
 page = 0
@@ -34,8 +41,8 @@ $(document).ready ->
   navTop = $('#'+pages[1]).position().top
 
   addEmailLink()
-
   displayArrow()
+  fixYoutubeEmbed()
 
   $(window).resize ->
     navTop = $(window).height() + 171
@@ -92,7 +99,7 @@ $(document).ready ->
     # top button handlers
 
     for cur_page in pages
-      if($('#'+cur_page).offset().top < 100 && $('#'+cur_page).offset().top > -$('#'+cur_page).height() && !$("#"+cur_page+"_button").is(':animated'))
+      if $('#'+cur_page).offset().top < 100 && $('#'+cur_page).offset().top > -$('#'+cur_page).height() && !$("#"+cur_page+"_button").is(':animated')
         $("#"+cur_page+"_button").addClass('current')
         $("#"+cur_page+"_button").removeClass('not_current')
       else
