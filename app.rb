@@ -66,10 +66,10 @@ get_posts = client.posts "aaronmicahzick.tumblr.com", :type => "text"
 
 get "/" do
   @fields_map = {
-    :about   => Field.where( section: "about" ).to_a,
-    :work    => Field.where( section: "work" ).to_a,
-    :gear    => Field.where( section: "gear" ).to_a,
-    :contact => Field.where( section: "contact" ).to_a
+    :about   => Field.where( section: "about" ).order( :id ).to_a,
+    :work    => Field.where( section: "work" ).order( :id ).to_a,
+    :gear    => Field.where( section: "gear" ).order( :id ).to_a,
+    :contact => Field.where( section: "contact" ).order( :id ).to_a
   }
 
   @latest_post = get_posts["posts"][0]
