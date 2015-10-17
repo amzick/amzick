@@ -1,6 +1,8 @@
 # database.yml
 
 development:
-  adapter: sqlite3
+  adapter: postgresql
   database: development
+  username: root
+  password: starwars
   host: localhost
