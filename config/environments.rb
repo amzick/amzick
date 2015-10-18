@@ -3,6 +3,12 @@
 #The environment variable DATABASE_URL should be in the following format:
 # => postgres://{user}:{password}@{host}:{port}/path
 configure :production, :development do
+
+  puts "\n\n"
+  puts ENV['DATABASE_URL']
+  puts "\n\n"
+
+
   db = URI.parse( ENV['DATABASE_URL'] || 'postgres://localhost/amzick' )
 
   ActiveRecord::Base.establish_connection(
