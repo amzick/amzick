@@ -14,3 +14,15 @@ configure :production, :development do
       :encoding => 'utf8'
   )
 end
+
+# establish_connection(
+#   adapter: 'mysql2',
+#   encoding: 'utf8',
+#   reconnect: true,
+#   database: 'app_production',
+#   pool: 40,
+#   username: 'root',
+#   password: 'secretpassword',
+#   socket: '/var/run/mysqld/mysqld.sock',
+#   host: '12.34.56.78'
+# )
