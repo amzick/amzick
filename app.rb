@@ -166,9 +166,6 @@ end
 
 put "/workitems/update" do
   protected!
-  puts "\n\n"
-  puts params
-  puts "\n\n"
 
   all_saves_successful = true
 
@@ -183,12 +180,8 @@ put "/workitems/update" do
 
   if all_saves_successful
     return 200
-    # haml :"work_items/edit"
-    # redirect "/workitems/edit", :notice => 'Updated Successfully'
   else
     return 500
-    # haml :"work_items/edit"
-    # redirect "/workitems/edit", :error => 'Something went wrong. Try again.'
   end
 end
 

@@ -21,7 +21,9 @@ configure :production, :development do
   #     :encoding => 'utf8'
   # )
 
-  ActiveRecord::Base.establish_connection( ENV['DATABASE_URL'] )
+  db = ENV['DATABASE_URL'] || 'postgres://localhost/amzick'
+
+  ActiveRecord::Base.establish_connection( db )
 end
 
 # establish_connection(
