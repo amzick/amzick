@@ -26,20 +26,6 @@ switchPage = ( pageToShow ) ->
 displayArrow = ->
   $("#arrow").delay( 700 ).animate { 'top': "#{$(window).height() - 54}px" }, 500
 
-# fixYoutubeEmbed = ->
-  # $youtube = $("#youtube_iframe")
-  # # w = $("#blog .blog_post_body").width()
-  # # h = 9/16 * w
-  # # $youtube.attr 'width', w
-  # # $youtube.attr 'height', h
-
-
-  # $( "#blog .body" ).height() - $("#see-all").height()
-  
-  # w = 16/9 * h
-  # $youtube.attr 'width', w
-  # $youtube.attr 'height', h
-
 # to do : enum
 pages = ['landing','about','work','gear','blog','contact']
 page = 0
@@ -62,17 +48,10 @@ $(document).ready ->
     e.preventDefault()
     switchPage( $(this).attr 'id' )
 
-  # $('#landing').parent().bind 'DOMMouseScroll mousewheel', (e, delta) ->
-    # handleScrollCase this.scrollTop
 
   handleScrollCase = ( top ) ->
     currentPos = top
     currentNavPos = $('#navigation-bar').position().top
-
-    # # normalize the wheel delta
-    # delta = delta || -e.originalEvent.detail / 3 || e.originalEvent.wheelDelta / 120
-    # scrollDown = delta < 0
-    # scrollUp   = delta > 0
 
     # arrow
     if currentPos > 10
@@ -100,10 +79,6 @@ $(document).ready ->
       $name.addClass 'fixed-to-top'
     else
       $name.removeClass 'fixed-to-top'
-
-    # if currentNavPos > 0
-    #   return false
-    # top button handlers
 
     for cur_page in pages
       if $('#'+cur_page).offset().top < 100 && $('#'+cur_page).offset().top > -$('#'+cur_page).height() && !$("#"+cur_page+"_button").is(':animated')

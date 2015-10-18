@@ -44,14 +44,22 @@
 
 #work.page
   .body
+    / %ul
+    /   %li{ work_item_category: "Sound - Film and Animation" } Sound - Film and Animation
+    /   %li{ work_item_category: "Sound - Advertising and Commercial" } Sound - Advertising and Commercial
+    /   %li{ work_item_category: "Sound - Video Games" } Sound - Video Games
+    /   %li{ work_item_category: "Sound - Theater" } Sound - Theater
+    /   %li{ work_item_category: "Music - Selected Concert and Electronic Works" } Music - Selected Concert and Electronic Works
+    /   %li{ work_item_category: "Music - Scores" } Music - Scores
+    /   %li{ work_item_category: "Music - Commercial Work" } Music - Commercial Work
+
     %table
       %tr
-        - @fields_map[ :work ].each do | i |
-          %td{ :id => "#{i.name.downcase.gsub( / /, '-')}", :class => "work-page-button #{ if i.name == 'Production Sound' then 'selected' end }" }
-            %a= i.name
-    - @fields_map[ :work ].each do | i |
-      %div{ :class=>"work-page-view #{ if i.name != 'Production Sound' then 'hidden' end }", :page => "#{i.name.downcase.gsub( / /, '-')}" }
-        %p= i.body
+        %td{ work_item_category: "Production Sound" } Production Sound
+        %td{ work_item_category: "Post-Production Sound" } Post-Production Sound
+        %td{ work_item_category: "Music" } Music
+
+    = haml :"work_items/index"
     .work-page-footer
       %a{ :href => "/zick_cv.pdf" } See full CV
 

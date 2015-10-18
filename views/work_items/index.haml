@@ -1,0 +1,11 @@
+%table#work-items
+  - @work_items.order( "created_at DESC" ).each do |w|
+    %tr{ work_item_id: "#{ w.id }", work_item_category: "#{ w.category }" }
+      %td
+        - if w.link != ""
+          %a{ href: "" }
+            %span= w.title
+        - else
+          %span= w.title
+      %td= w.date
+      %td= w.role

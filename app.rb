@@ -16,6 +16,7 @@ require 'coffee-script'
 require 'tumblr_client'
 
 require './models/field'
+require './models/work_item'
 
 enable :sessions
 
@@ -71,6 +72,8 @@ get "/" do
     :gear    => Field.where( section: "gear" ).order( :id ).to_a,
     :contact => Field.where( section: "contact" ).order( :id ).to_a
   }
+
+  @work_items = WorkItem.all
 
   @latest_post = get_posts["posts"][0]
 
@@ -131,6 +134,62 @@ get "/blog" do
     @total_posts = get_posts["total_posts"]
     @title = "Blog"
     haml :blog
+end
+
+get "/workitems/edit" do
+  protected!
+  @work_items = WorkItem.all
+  haml :"work_items/edit"
+end
+
+get "/workitems/delete/:id" do
+  protected!
+  @work_item = WorkItem.find( params[:id] )
+
+  if @work_item.destroy
+    redirect "/workitems/edit", :notice => 'Updated Successfully'
+  else
+    redirect "/workitems/edit", :error => 'Something went wrong. Try again.'
+  end
+end
+
+post "/workitems/edit" do
+  protected!
+  @work_item = WorkItem.new( params[:work_item] )
+
+  if @work_item.save
+    redirect "/workitems/edit", :notice => 'Updated Successfully'
+  else
+    redirect "/workitems/edit", :error => 'Something went wrong. Try again.'
+  end 
+end
+
+put "/workitems/update" do
+  protected!
+  puts "\n\n"
+  puts params
+  puts "\n\n"
+
+  all_saves_successful = true
+
+  params.each do | id |
+    wi = WorkItem.find id[0]
+    wi.update_self( id[1][0], id[1][1] ) # colummn, value
+
+    if wi.save == false
+      all_saves_successful = false
+    end
+  end
+
+  if all_saves_successful
+    return 200
+    # haml :"work_items/edit"
+    # redirect "/workitems/edit", :notice => 'Updated Successfully'
+  else
+    return 500
+    # haml :"work_items/edit"
+    # redirect "/workitems/edit", :error => 'Something went wrong. Try again.'
+  end
 end
 
 get "/:id.css" do
