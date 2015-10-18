@@ -6,3 +6,10 @@ development:
   username: root
   password: starwars
   host: localhost
+
+production:
+  adapter: postgresql
+  database: development
+  username: root
+  password: starwars
+  host: localhost

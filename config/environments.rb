@@ -9,17 +9,19 @@ configure :production, :development do
   puts "\n\n"
 
 
-  db = URI.parse( ENV['DATABASE_URL'] || 'postgres://localhost/amzick' )
+  # db = URI.parse( ENV['DATABASE_URL'] || 'postgres://localhost/amzick' )
 
-  ActiveRecord::Base.establish_connection(
-      :adapter => 'postgres',
-      # :adapter => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
-      :host     => db.host,
-      :username => db.user,
-      :password => db.password,
-      :database => db.path[1..-1],
-      :encoding => 'utf8'
-  )
+  # ActiveRecord::Base.establish_connection(
+  #     :adapter => 'postgres',
+  #     # :adapter => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+  #     :host     => db.host,
+  #     :username => db.user,
+  #     :password => db.password,
+  #     :database => db.path[1..-1],
+  #     :encoding => 'utf8'
+  # )
+
+  ActiveRecord::Base.establish_connection( ENV['DATABASE_URL'] )
 end
 
 # establish_connection(
