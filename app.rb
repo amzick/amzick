@@ -1,8 +1,11 @@
 # app.rb
 
 require "sinatra"
-require "sinatra/activerecord"
+
 require "./config/environments"
+
+require "sinatra/activerecord"
+
 
 require 'sinatra/flash'
 require 'sinatra/redirect_with_flash'
