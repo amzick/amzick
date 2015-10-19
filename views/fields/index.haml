@@ -54,7 +54,8 @@
         %td{ work_item_category: "Post-Production Sound" } Post-Production Sound
         %td{ work_item_category: "Music" } Music
 
-    = haml :"work_items/index"
+    / = haml :"work_items/index"
+    %table#work-item= @fields_map[ :work ][ 0 ].body
     .work-page-footer
       %a{ :href => "/zick_cv.pdf" } See full CV
 
