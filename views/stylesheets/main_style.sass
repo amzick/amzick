@@ -221,7 +221,6 @@ html
     overflow          : hidden
     min-height:  900px
     .body
-      top : 0px
       z-index : 1000
     #placeholder_nav_div
       display: block
@@ -248,11 +247,6 @@ html
       margin   : 0px auto
       background-color : white
       table
-        width : 100%
-        height: 80px
-        // border-bottom: solid
-        // border-width : 1px
-        // border-color : rgba(0,0,0,.2)
         table-layout : fixed
         -webkit-border-vertical-spacing: 0px
         -webkit-border-horizontal-spacing: 0px
@@ -298,12 +292,12 @@ html
   &#gear
     background-image  : url("/images/gear_bg.jpg")
     .body
-      @include basicBody(500px)
+      @include basicBody(100%)
 
   &#blog
     background-image  : url("/images/blog_main_bg.jpg")
     .body
-      @include basicBody(500px)
+      @include basicBody(100%)
       .blog_post
         height : 95%
         .blog_post_header
@@ -337,7 +331,7 @@ html
   &#contact
     background-image  : url("/images/contact_bg.jpg")
     .body
-      @include basicBody(500px)
+      @include basicBody(100%)
       text-align: center
       a
         text-decoration: none
