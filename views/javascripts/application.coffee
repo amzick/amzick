@@ -61,7 +61,13 @@ $(document).ready ->
       if $('#arrow').css( 'display' ) == 'none'
         $('#arrow').fadeIn 600
 
-    $('html').css('background-position-y',(currentPos)+'%')
+    percentageBGScroll = currentPost/10
+    if percentageBGScroll > 100
+      percentageBGScroll = 100
+    if percentageBGScroll < 0
+      percentageBGScroll = 0
+
+    $('html').css('background-position-y',(percentageBGScroll)+'%')
 
     # nav bar scrolling
     smallDif = 0
