@@ -61,7 +61,7 @@ $(document).ready ->
       if $('#arrow').css( 'display' ) == 'none'
         $('#arrow').fadeIn 600
 
-    $('html').css('background-position',(currentPost/3000)+'%')
+    $('html').css('background-position',(currentPos/3000)+'%')
 
     # nav bar scrolling
     smallDif = 0
