@@ -63,7 +63,7 @@ $(document).ready ->
 
     console.log(currentPos)
     console.log($('#landing').parent().height())
-    percentageBGScroll = currentPos/($('#landing').parent().height()*6)
+    percentageBGScroll = (currentPos/($('#landing').parent().height()*6))*100
     if percentageBGScroll > 100
       percentageBGScroll = 100
     if percentageBGScroll < 0
