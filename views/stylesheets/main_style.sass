@@ -226,6 +226,7 @@ html
     .body
       @include basicBody(100%)
       z-index : 1000
+      padding-top : 100px
     #placeholder_nav_div
       display: block
       height          : 91px
@@ -333,13 +334,14 @@ html
     background-image  : url("/images/contact_bg.jpg")
     .body
       @include basicBody(100%)
+      background-color : rgba(0,0,0,0)
+      color : white
       text-align: center
       a
         text-decoration: none
-        color: gray
         @include simpleEase()
         &:hover
-          color: black
+          color: gray
 
 // WORK ITEMS EDIT PAGE
 
