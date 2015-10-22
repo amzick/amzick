@@ -47,6 +47,7 @@ html
       height            : 100%
       overflow-y        : scroll
       overflow-x        : hidden
+      background-color  : black
 
 @-webkit-keyframes backgroundAnimation
   0%
@@ -213,13 +214,11 @@ html
     margin  :   0px auto
 
   &#landing
-    background-image  : url("/images/landing_bg.jpg")
     padding-top       : 171px
     .info
       h3
         padding: 5px 28px
   &#about
-    background-image  : url("/images/about_bg.jpg")
     overflow          : hidden
     min-height        :  900px
     .body
@@ -246,7 +245,6 @@ html
         height : 100% !important
 
   &#work
-    background-image  : url("/images/work_bg.jpg")
     .body
       @include basicBody(100%)
       table#work-page-nav
@@ -293,12 +291,10 @@ html
 
 
   &#gear
-    background-image  : url("/images/gear_bg.jpg")
     .body
       @include basicBody(100%)
 
   &#blog
-    background-image  : url("/images/blog_main_bg.jpg")
     .body
       @include basicBody(100%)
       .blog_post
@@ -332,7 +328,6 @@ html
             color : black
 
   &#contact
-    background-image  : url("/images/contact_bg.jpg")
     .body
       @include basicBody(100%)
       background-color : rgba(0,0,0,0)
