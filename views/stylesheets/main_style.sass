@@ -222,6 +222,7 @@ html
     overflow          : hidden
     min-height:  900px
     .body
+      @include basicBody(100%)
       z-index : 1000
     #placeholder_nav_div
       display: block
@@ -245,8 +246,7 @@ html
   &#work
     background-image  : url("/images/work_bg.jpg")
     .body
-      margin   : 0px auto
-      background-color : white
+      @include basicBody(100%)
       table#work-page-nav
         table-layout : fixed
         -webkit-border-vertical-spacing: 0px
