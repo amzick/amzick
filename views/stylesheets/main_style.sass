@@ -335,13 +335,15 @@ html
     .body
       @include basicBody(100%)
       background-color : rgba(0,0,0,0)
-      color : white
       text-align: center
       a
         text-decoration: none
         @include simpleEase()
+        color : white
         &:hover
-          color: gray
+          color : gray
+      p
+        color : white
 
 // WORK ITEMS EDIT PAGE
 
