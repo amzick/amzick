@@ -61,7 +61,7 @@ $(document).ready ->
       if $('#arrow').css( 'display' ) == 'none'
         $('#arrow').fadeIn 600
 
-    percentageBGScroll = (currentPos/($('#landing').parent().height()*7.5))*100
+    percentageBGScroll = (currentPos/($('#landing').parent().height()*5.5))*100
     if percentageBGScroll > 100
       percentageBGScroll = 100
     if percentageBGScroll < 0
