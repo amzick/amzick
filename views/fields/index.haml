@@ -30,7 +30,8 @@
           %li#about_button.not_current
             %a{ :href=>"\#about" } ABOUT
   .body
-    %p= @fields_map[ :about ][ 0 ].body
+    .aboutHolder
+      %p= @fields_map[ :about ][ 0 ].body
     .reel
       - vimeo_id = @fields_map[ :about ][ 1 ].body
       %iframe{ :src=>"//player.vimeo.com/video/#{vimeo_id}", :width=>"800", :height=>"450", :frameborder=>"0" }
