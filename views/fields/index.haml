@@ -30,7 +30,6 @@
           %li#about_button.not_current
             %a{ :href=>"\#about" } ABOUT
   .body
-    #placeholder_nav_div
     %p= @fields_map[ :about ][ 0 ].body
     .reel
       - vimeo_id = @fields_map[ :about ][ 1 ].body
