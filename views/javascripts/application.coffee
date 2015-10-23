@@ -10,7 +10,6 @@ addEmailLink = ->
 switchPage = ( pageToShow ) ->
   pageToHide = $('.work-page-button.selected').attr 'id'
 
-  console.log pageToShow
   $( "[page='" + pageToHide + "'" ).fadeOut 100, ->
       $( "[page='" + pageToShow + "'" ).fadeIn 100, ->
         $( "[page='" + pageToShow + "'" ).removeClass 'hidden'
