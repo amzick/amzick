@@ -35,7 +35,6 @@ $(document).ready ->
   navTop = $('#'+pages[1]).position().top
 
   addEmailLink()
-  displayArrow()
 
   $(".work-page-button").on 'click', (e) ->
     workPageSelector( $(this).attr("category") )
