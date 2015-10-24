@@ -61,7 +61,7 @@ $(document).ready ->
         $('#arrow').fadeIn 600
 
     pageHeight = $('#landing').parent().height()
-    percentageBGScroll = ((currentPos - pageHeight)/(pageHeight + 2267 - pageHeight/2))*100
+    percentageBGScroll = ((currentPos - pageHeight)/(pageHeight + 2348 - pageHeight/2))*100
     if percentageBGScroll > 100
       percentageBGScroll = 100
     if percentageBGScroll < 0
