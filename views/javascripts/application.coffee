@@ -8,7 +8,7 @@ addEmailLink = ->
     $("#email").replaceWith "<a href='mailto:" + emailAddress + "'>" + emailAddress + "</a>"
 
 workPageSelector = ( category ) ->
-  $selected = $('.work-page-button.selected')
+  $selected = $('.work-page-button.current')
 
   departing_cat = $selected.attr( "category" )
 
@@ -20,9 +20,9 @@ workPageSelector = ( category ) ->
 
 
   if $selected != null
-    $selected.removeClass 'selected'
+    $selected.removeClass 'current'
 
-  $(".work-page-button[category='" + category + "'").addClass 'selected'
+  $(".work-page-button[category='" + category + "'").addClass 'current'
 
 
 #############################################################
