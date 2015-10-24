@@ -7,21 +7,6 @@ addEmailLink = ->
     emailAddress = userName + "@" + hostName
     $("#email").replaceWith "<a href='mailto:" + emailAddress + "'>" + emailAddress + "</a>"
 
-# switchPage = ( pageToShow ) ->
-#   pageToHide = $('.work-page-button.selected').attr 'id'
-
-#   $( "[page='" + pageToHide + "'" ).fadeOut 100, ->
-#       $( "[page='" + pageToShow + "'" ).fadeIn 100, ->
-#         $( "[page='" + pageToShow + "'" ).removeClass 'hidden'
-#       $( "[page='" + pageToHide + "'" ).addClass 'hidden'
-
-#   $selected = $('.selected')
-
-#   if $selected != null
-#     $selected.removeClass 'selected'
-
-#   $("##{pageToShow}").addClass 'selected'
-
 displayArrow = ->
   $("#arrow").delay( 700 ).animate { 'top': "#{$(window).height() - 54}px" }, 500
 
@@ -64,11 +49,6 @@ $(document).ready ->
 
   $('#landing').parent().scroll ->
     handleScrollCase $(this).scrollTop()
-
-  # $('.work-page-button').on 'click', (e) ->
-  #   e.preventDefault()
-  #   switchPage( $(this).attr 'id' )
-
 
   handleScrollCase = ( top ) ->
     currentPos = top
