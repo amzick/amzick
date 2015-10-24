@@ -34,8 +34,8 @@ pages = ['landing','about','work','gear','blog','contact']
 page = 0
 
 offsetAnchor = ->
-  if location.hash.length !== 0
-    window.scrollTo(window.scrollX, window.scrollY - 100);
+  if location.hash.length != 0
+    window.scrollTo window.scrollX, window.scrollY - 100
 
 $(window).on "hashchange", ->
   offsetAnchor()
