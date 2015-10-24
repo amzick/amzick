@@ -40,8 +40,8 @@ offsetAnchor = ->
 $(window).on "hashchange", -> {
     offsetAnchor()
 
-$(window).setTimeout ->
-    offsetAnchor();
+window.setTimeout ->
+    offsetAnchor()
 , 1
 
 $(document).ready ->
