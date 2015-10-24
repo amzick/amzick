@@ -254,9 +254,18 @@ html
       @include basicBody(100%)
       #work-list
         padding : 30px
+        width: 100%
+        .work-item
+          font-style: bold
+        .sub.work-item
+          font-style: italic
+          td.role
+            padding-bottom: 1em
       table#work-page-nav
         width : 100%
         padding : 30px
+        tr
+          text-align: center
         table-layout : fixed
         -webkit-border-vertical-spacing: 0px
         -webkit-border-horizontal-spacing: 0px
