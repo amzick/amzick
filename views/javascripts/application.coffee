@@ -7,9 +7,6 @@ addEmailLink = ->
     emailAddress = userName + "@" + hostName
     $("#email").replaceWith "<a href='mailto:" + emailAddress + "'>" + emailAddress + "</a>"
 
-displayArrow = ->
-  $("#arrow").delay( 700 ).animate { 'top': "#{$(window).height() - 25 }px" }, 500
-
 workPageSelector = ( category ) ->
   $selected = $('.work-page-button.selected')
 
