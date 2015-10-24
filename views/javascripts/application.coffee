@@ -33,13 +33,6 @@ workPageSelector = ( category ) ->
 pages = ['landing','about','work','gear','blog','contact']
 page = 0
 
-offsetAnchor = ->
-  if location.hash.length != 0
-    window.scrollTo window.scrollX, window.scrollY - 100
-
-$(window).on "hashchange", ->
-  offsetAnchor()
-
 $(document).ready ->
   navTop = $('#'+pages[1]).position().top
 
@@ -47,6 +40,13 @@ $(document).ready ->
 
   $(".work-page-button").on 'click', (e) ->
     workPageSelector( $(this).attr("category") )
+
+  offsetAnchor = ->
+    if location.hash.length !== 0
+      window.scrollTo window.scrollX, window.scrollY - 91
+
+  $(window).on "hashchange", ->
+    offsetAnchor()
 
   $(window).resize ->
     navTop = $(window).height() + 171
