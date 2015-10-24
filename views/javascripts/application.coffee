@@ -34,7 +34,8 @@ pages = ['landing','about','work','gear','blog','contact']
 page = 0
 
 $(window).on "hashchange", ->
-    window.scrollTo(window.scrollX, window.scrollY - 91);
+  console.log("hashchange")
+  window.scrollTo(window.scrollX, window.scrollY - 91);
 
 $(document).ready ->
   navTop = $('#'+pages[1]).position().top
