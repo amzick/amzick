@@ -13,14 +13,14 @@ displayArrow = ->
 workPageSelector = ( category ) ->
   $selected = $('.work-page-button.selected')
 
-  if category == "all" and $selected.attr( "category" ) != "all"
+  departing_cat = $selected.attr( "category" )
+
+  if category == "all" and departing_cat != "all"
     $( ".work-item" ).not( ":visible" ).fadeIn()
   else
-    if ! $( ".#{category}" ).is( ":visible" )
-      $( ".work-item" ).not( ".#{category}" ).fadeOut( "slow" )
-      $( ".#{category}" ).fadeIn( "slow" )
-    else
-      $( ".work-item" ).not( ".#{category}" ).fadeOut( "slow" )
+    $( ".#{category}" ).not( ":visible" ).fadeIn( "slow" )
+    $( ".work-item").not( ".#{category}").fadeOut( "slow" )
+
 
   if $selected != null
     $selected.removeClass 'selected'
