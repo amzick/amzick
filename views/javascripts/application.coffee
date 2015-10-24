@@ -89,7 +89,7 @@ $(document).ready ->
       $name.removeClass 'fixed-to-top'
 
     for cur_page in pages
-      if $('#'+cur_page).offset().top < 100 && $('#'+cur_page).offset().top > -$('#'+cur_page).height() && !$("#"+cur_page+"_button").is(':animated')
+      if $('#'+cur_page).offset().top < 20 && $('#'+cur_page).offset().top > -$('#'+cur_page).height() && !$("#"+cur_page+"_button").is(':animated')
         $("#"+cur_page+"_button").addClass('current')
         $("#"+cur_page+"_button").removeClass('not_current')
       else
