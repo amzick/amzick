@@ -195,7 +195,6 @@ html
   display           : block
   width             : 100%
   height            : 100%
-  min-height        : 700px
   padding           : 0px
   background-size   : cover
   background-blend-mode :darken
@@ -229,7 +228,6 @@ html
         padding: 5px 28px
   &#about
     overflow          : hidden
-    min-height        :  900px
     .body
       @include basicBody(100%)
       padding : 0px
@@ -239,7 +237,7 @@ html
       height          : 91px
       width : 100%
     .aboutHolder
-      height : 50%
+      height : 250px
       padding: 0px 40px
       p
         width: 100%
@@ -247,7 +245,7 @@ html
         background-color : white
         padding-top : 130px
     .reel
-      height : 50%
+      height : 450px
       iframe
         display: block
         margin: 0px auto
@@ -256,7 +254,7 @@ html
 
   &#work
     .body
-      @include basicBody(100%)
+      @include basicBody(700px)
       #work-list
         padding : 30px
         width: 100%
@@ -319,7 +317,7 @@ html
 
   &#gear
     .body
-      @include basicBody(100%)
+      @include basicBody(467px)
       background-image  : url("/images/gear.jpg")
       background-size : contain
       h3
@@ -327,7 +325,7 @@ html
 
   &#blog
     .body
-      @include basicBody(100%)
+      @include basicBody(600px)
       .blog_post
         height : 95%
         .blog_post_header
