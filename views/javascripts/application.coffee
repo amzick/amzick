@@ -33,9 +33,16 @@ workPageSelector = ( category ) ->
 pages = ['landing','about','work','gear','blog','contact']
 page = 0
 
-$(window).on "hashchange", ->
-  console.log("hashchange")
-  window.scrollTo(window.scrollX, window.scrollY - 91);
+offsetAnchor = ->
+  if location.hash.length !== 0
+    window.scrollTo(window.scrollX, window.scrollY - 100);
+
+$(window).on "hashchange", -> {
+    offsetAnchor()
+
+$(window).setTimeout ->
+    offsetAnchor();
+, 1
 
 $(document).ready ->
   navTop = $('#'+pages[1]).position().top
