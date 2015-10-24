@@ -37,8 +37,8 @@ offsetAnchor = ->
   if location.hash.length !== 0
     window.scrollTo(window.scrollX, window.scrollY - 100);
 
-$(window).on "hashchange", -> {
-    offsetAnchor()
+$(window).on "hashchange", ->
+  offsetAnchor()
 
 $(document).ready ->
   navTop = $('#'+pages[1]).position().top
