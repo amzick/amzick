@@ -22,7 +22,9 @@ workPageSelector = ( category ) ->
   if $selected != null
     $selected.removeClass 'current'
 
-  $(".work-page-button[category='" + category + "'").addClass 'current'
+  $(".work-page-button").addClass 'not_current'
+  $(".work-page-button[category='" + category + "']").removeClass 'not_current'
+  $(".work-page-button[category='" + category + "']").addClass 'current'
 
 
 #############################################################

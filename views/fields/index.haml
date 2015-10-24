@@ -46,13 +46,13 @@
   .body
     %table#work-page-nav
       %tr
-        %td.work-page-button{ category: "production-sound" }
+        %td.work-page-button.not_current{ category: "production-sound" }
           %span PRODUCTION SOUND
-        %td.work-page-button{ category: "post-production-sound" }
+        %td.work-page-button.not_current{ category: "post-production-sound" }
           %span POST-PRODUCTION SOUND
-        %td.work-page-button{ category: "music" }
+        %td.work-page-button.not_current{ category: "music" }
           %span MUSIC
-        %td.work-page-button.selected{ category: "all" }
+        %td.work-page-button.current{ category: "all" }
           %span ALL
 
     %table#work-list= @fields_map[ :work ][ 0 ].body
