@@ -20,15 +20,20 @@
         %ul
           // in reverse order b/c the float: right CSS rule flips them
           %li#contact_button.not_current
-            %a{ :href=>"\#contact" } CONTACT
+            %a{ :href=>"\#contact" }
+              %span CONTACT
           %li#blog_button.not_current
-            %a{ :href=>"\#blog" } BLOG
+            %a{ :href=>"\#blog" }
+              %span BLOG
           %li#gear_button.not_current
-            %a{ :href=>"\#gear" } GEAR
+            %a{ :href=>"\#gear" }
+              %span GEAR
           %li#work_button.not_current
-            %a{ :href=>"\#work" } WORK
+            %a{ :href=>"\#work" }
+              %span WORK
           %li#about_button.not_current
-            %a{ :href=>"\#about" } ABOUT
+            %a{ :href=>"\#about" }
+              %span ABOUT
   .body
     .aboutHolder
       %p= @fields_map[ :about ][ 0 ].body
