@@ -40,10 +40,6 @@ offsetAnchor = ->
 $(window).on "hashchange", -> {
     offsetAnchor()
 
-window.setTimeout ->
-    offsetAnchor()
-, 1
-
 $(document).ready ->
   navTop = $('#'+pages[1]).position().top
 
