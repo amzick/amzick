@@ -7,23 +7,43 @@ addEmailLink = ->
     emailAddress = userName + "@" + hostName
     $("#email").replaceWith "<a href='mailto:" + emailAddress + "'>" + emailAddress + "</a>"
 
-switchPage = ( pageToShow ) ->
-  pageToHide = $('.work-page-button.selected').attr 'id'
+# switchPage = ( pageToShow ) ->
+#   pageToHide = $('.work-page-button.selected').attr 'id'
 
-  $( "[page='" + pageToHide + "'" ).fadeOut 100, ->
-      $( "[page='" + pageToShow + "'" ).fadeIn 100, ->
-        $( "[page='" + pageToShow + "'" ).removeClass 'hidden'
-      $( "[page='" + pageToHide + "'" ).addClass 'hidden'
+#   $( "[page='" + pageToHide + "'" ).fadeOut 100, ->
+#       $( "[page='" + pageToShow + "'" ).fadeIn 100, ->
+#         $( "[page='" + pageToShow + "'" ).removeClass 'hidden'
+#       $( "[page='" + pageToHide + "'" ).addClass 'hidden'
 
-  $selected = $('.selected')
+#   $selected = $('.selected')
+
+#   if $selected != null
+#     $selected.removeClass 'selected'
+
+#   $("##{pageToShow}").addClass 'selected'
+
+displayArrow = ->
+  $("#arrow").delay( 700 ).animate { 'top': "#{$(window).height() - 54}px" }, 500
+
+workPageSelector = ( category ) ->
+  $selected = $('.work-page-button.selected')
+
+  if category == "all" and $selected.attr( "category" ) != "all"
+    $( ".work-item" ).not( ":visible" ).fadeIn()
+  else
+    if ! $( ".#{category}" ).is( ":visible" )
+      $( ".work-item" ).not( ".#{category}" ).fadeOut( "slow" )
+      $( ".#{category}" ).fadeIn( "slow" )
+    else
+      $( ".work-item" ).not( ".#{category}" ).fadeOut( "slow" )
 
   if $selected != null
     $selected.removeClass 'selected'
 
-  $("##{pageToShow}").addClass 'selected'
+  $(".work-page-button[category='" + category + "'").addClass 'selected'
 
-displayArrow = ->
-  $("#arrow").delay( 700 ).animate { 'top': "#{$(window).height() - 54}px" }, 500
+
+#############################################################
 
 # to do : enum
 pages = ['landing','about','work','gear','blog','contact']
@@ -34,7 +54,9 @@ $(document).ready ->
 
   addEmailLink()
   displayArrow()
-  # fixYoutubeEmbed()
+
+  $(".work-page-button").on 'click', (e) ->
+    workPageSelector( $(this).attr("category") )
 
   $(window).resize ->
     navTop = $(window).height() + 171
@@ -43,9 +65,9 @@ $(document).ready ->
   $('#landing').parent().scroll ->
     handleScrollCase $(this).scrollTop()
 
-  $('.work-page-button').on 'click', (e) ->
-    e.preventDefault()
-    switchPage( $(this).attr 'id' )
+  # $('.work-page-button').on 'click', (e) ->
+  #   e.preventDefault()
+  #   switchPage( $(this).attr 'id' )
 
 
   handleScrollCase = ( top ) ->

@@ -39,30 +39,24 @@
 
 #work.page
   .body
-    / %ul
-    /   %li{ work_item_category: "Sound - Film and Animation" } Sound - Film and Animation
-    /   %li{ work_item_category: "Sound - Advertising and Commercial" } Sound - Advertising and Commercial
-    /   %li{ work_item_category: "Sound - Video Games" } Sound - Video Games
-    /   %li{ work_item_category: "Sound - Theater" } Sound - Theater
-    /   %li{ work_item_category: "Music - Selected Concert and Electronic Works" } Music - Selected Concert and Electronic Works
-    /   %li{ work_item_category: "Music - Scores" } Music - Scores
-    /   %li{ work_item_category: "Music - Commercial Work" } Music - Commercial Work
-
     %table#work-page-nav
       %tr
-        %td{ category: "Production Sound" } Production Sound
-        %td{ category: "Post-Production Sound" } Post-Production Sound
-        %td{ category: "Music" } Music
+        %td.work-page-button{ category: "production-sound" }
+          %span Production Sound
+        %td.work-page-button{ category: "post-production-sound" }
+          %span Post-Production Sound
+        %td.work-page-button{ category: "music" }
+          %span Music
+        %td.work-page-button.selected{ category: "all" }
+          %span All
 
-    / = haml :"work_items/index"
-    %table#work-item= @fields_map[ :work ][ 0 ].body
+    %table#work-list= @fields_map[ :work ][ 0 ].body
 
     .work-page-footer
       %a{ :href => "/zick_cv.pdf" } See full CV
 
 #gear.page
   .body
-    //%p= @fields_map[ :gear ][ 0 ].body
 
 #blog.page
   .body

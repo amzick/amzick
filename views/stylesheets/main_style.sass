@@ -252,7 +252,7 @@ html
   &#work
     .body
       @include basicBody(100%)
-      #work-item
+      #work-list
         padding : 30px
       table#work-page-nav
         width : 100%
@@ -263,8 +263,9 @@ html
         td
           @include simpleEaseFast()
           &.selected
-            border-bottom: solid black 1px
             cursor: default
+            span
+              border-bottom: solid black 1px
           &:not(.selected):hover
             color : rgba(0, 0, 0, 0.4)
             cursor: pointer
