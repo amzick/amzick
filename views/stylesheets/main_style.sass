@@ -263,27 +263,29 @@ html
             padding-bottom: 1em
       table#work-page-nav
         width : 100%
-        padding : 30px
         tr
           text-align: center
         table-layout : fixed
         -webkit-border-vertical-spacing: 0px
         -webkit-border-horizontal-spacing: 0px
-        td
+        td.work-page-button
+          padding: 1em
+          font-style      : italic
+          width           : 100%
+          text-decoration : none
+          color           : black
+          text-align      : center
           @include simpleEaseFast()
           &.selected
             cursor: default
+            background-color: black
+            span
+              color: white
+          &:not(.selected):hover
+            // color : rgba(0, 0, 0, 0.4)
+            cursor: pointer
             span
               border-bottom: solid black 1px
-          &:not(.selected):hover
-            color : rgba(0, 0, 0, 0.4)
-            cursor: pointer
-          a
-            width : 100%
-            text-align : center
-            display : block
-            font-weight : bold
-            font-size : 20px
       .work-page-view
         width: 100%
         display: block
@@ -306,7 +308,7 @@ html
           color: gray
           @include simpleEaseFast()
           &:hover
-            color: black
+            border-bottom: solid gray 1px
 
 
   &#gear
