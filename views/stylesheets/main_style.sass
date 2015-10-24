@@ -177,19 +177,19 @@ li
     background-color: rgba(0,0,0, 1)
     @include simpleEase
     a
-      color: white
+      color: white !important
       @include simpleEase
   &.not_current
     background-color: rgba(255,255,255, 1)
     @include simpleEase
     a
-      color: black
+      color: black !important
       @include simpleEase
-  &.not_current:hover
-    @include simpleEase
-    a
-      span
-        border-bottom: 1px black solid
+    &:hover
+      @include simpleEase
+      a
+        span
+          border-bottom: 1px black solid
 
 // Separate page rules
 .page
