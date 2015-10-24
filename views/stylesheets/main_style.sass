@@ -176,18 +176,18 @@ td, li
   &.current
     background-color: rgba(0,0,0, 1)
     @include simpleEase
-    &:first-child
+    a, span
       color: white !important
       @include simpleEase
   &.not_current
     background-color: rgba(255,255,255, 1)
     @include simpleEase
-    &:first-child
+    a, span
       color: black !important
       @include simpleEase
     &:hover
       @include simpleEase
-      &:first-child
+      a, span
         span
           border-bottom: 1px black solid
 
