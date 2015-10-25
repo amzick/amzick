@@ -1,5 +1,13 @@
 # application.coffee
 
+# scrollAnimating  = false
+
+# jQuery.fx.step.scrollTop = (E) ->
+#   console.log "NCKCNC"
+#   scrollAnimating = true
+#   E.elem.scrollTop = E.now
+#   scrollAnimating  = false
+
 addEmailLink = ->
   if $("#email") != null
     userName     = "aaron.zick"
@@ -36,7 +44,26 @@ page = 0
 $(document).ready ->
   navTop = $('#'+pages[1]).position().top
 
+  pageHeight = $('#landing').parent().height()
+
   addEmailLink()
+
+  # # ignoreScrollEvents = false
+
+  # $("#navigation-list li a").on 'click', (e) ->
+  #   e.preventDefault()
+
+  #   console.log "click"
+
+  #   button = $(this).parent().attr( "id" ).split( "_" )[0]
+  #   # pageNum = pages.indexOf( button )
+
+  #   console.log $("##{button}").offset().top - 91
+
+  #   ignoreScrollEvents = true
+  #   # $(document).scrollTop( $( "##{button}" ).offset().top - 91 )
+
+  #   $("html, body").animate( { scrollTop: $("##{button}").offset().top }, 1000 )
 
   $(".work-page-button").on 'click', (e) ->
     workPageSelector( $(this).attr("category") )
@@ -46,9 +73,18 @@ $(document).ready ->
     handleScrollCase $('#landing').parent().scrollTop()
 
   $('#landing').parent().scroll ->
+    # if ! scrollAnimating then
     handleScrollCase $(this).scrollTop()
 
   handleScrollCase = ( top ) ->
+
+    # ignore = ignoreScrollEvents
+    # ignoreScrollEvents = false
+
+    # if ignore then return false
+
+
+
     currentPos = top
     currentNavPos = $('#navigation-bar').position().top
 
@@ -60,7 +96,6 @@ $(document).ready ->
       if $('#arrow').css( 'display' ) == 'none'
         $('#arrow').fadeIn 600
 
-    pageHeight = $('#landing').parent().height()
     percentageBGScroll = ((currentPos - pageHeight)/(pageHeight + 2348 - pageHeight/2))*100
     if percentageBGScroll > 100
       percentageBGScroll = 100
