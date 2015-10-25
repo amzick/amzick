@@ -65,15 +65,14 @@
 
 #blog.page
   .body
+    %img{ src: "https://#{@img_url}" }
+
     .blog_post
-      .blog_post_header
-        - if(@latest_post["title"])
-          %h2= @latest_post["title"].upcase
-          %p#date= Time.parse( @latest_post["date"] ).strftime("%B %e, %Y")
-      .blog_post_body
-        - body = @latest_post["body"]
-        - puts body
-        %p= body[0..1000].gsub(/\s\w+\s*$/, '...</p>')
+      - if @latest_post["title"] 
+        %h3= @latest_post["title"].upcase + ", " + Time.parse( @latest_post["date"] ).strftime("%B %e, %Y").upcase
+      
+      - body = @latest_post["body"]
+      %p.blog_post_body= body[0..100].gsub(/\s\w+\s*$/, '...</p>')
     #see-all
       %a{ :href => "//aaronmicahzick.tumblr.com/" } Continue reading...
 
