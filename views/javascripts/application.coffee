@@ -34,8 +34,8 @@ workPageSelector = ( category ) ->
   $(".work-page-button[category='" + category + "']").removeClass 'not_current'
   $(".work-page-button[category='" + category + "']").addClass 'current'
 
-scrollGoToPage = ( page ) ->
-  $page = $( "##{page}" ).offset()
+# scrollGoToPage = ( page ) ->
+#   $page = $( "##{page}" ).offset()
 
 #############################################################
 
@@ -53,8 +53,9 @@ $(document).ready ->
   $(".work-page-button").on 'click', (e) ->
     workPageSelector( $(this).attr("category") )
 
-  $("#navigation-list li").on 'click', (e) ->
-    scrollGoToPage $(this).attr("id").split( "_button" )[0]
+  # $("#navigation-list li").on 'click', (e) ->
+  #   e.preventDefault()
+  #   scrollGoToPage $(this).attr("id").split( "_button" )[0]
 
   $(window).resize ->
     navTop = $(window).height() + 171
