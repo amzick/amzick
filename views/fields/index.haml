@@ -20,19 +20,19 @@
         %ul
           // in reverse order b/c the float: right CSS rule flips them
           %li#contact_button.not_current
-            %a{ :href=>"#contact" }
+            %a{ :href=>"" }
               %span CONTACT
           %li#blog_button.not_current
-            %a{ :href=>"#blog" }
+            %a{ :href=>"" }
               %span BLOG
           %li#gear_button.not_current
-            %a{ :href=>"#gear" }
+            %a{ :href=>"" }
               %span GEAR
           %li#work_button.not_current
-            %a{ :href=>"#work" }
+            %a{ :href=>"" }
               %span WORK
           %li#about_button.not_current
-            %a{ :href=>"#about" }
+            %a{ :href=>"" }
               %span ABOUT
   .body
     .aboutHolder
@@ -54,7 +54,7 @@
           %span MUSIC
         %td.work-page-button.current{ category: "all" }
           %span ALL
-          
+
     .table-wrapper
       %table#work-list= @fields_map[ :work ][ 0 ].body
 

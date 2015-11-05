@@ -34,6 +34,8 @@ workPageSelector = ( category ) ->
   $(".work-page-button[category='" + category + "']").removeClass 'not_current'
   $(".work-page-button[category='" + category + "']").addClass 'current'
 
+scrollGoToPage = ( page ) ->
+  $page = $( "##{page}" ).offset()
 
 #############################################################
 
@@ -48,43 +50,23 @@ $(document).ready ->
 
   addEmailLink()
 
-  # # ignoreScrollEvents = false
-
-  # $("#navigation-list li a").on 'click', (e) ->
-  #   e.preventDefault()
-
-  #   console.log "click"
-
-  #   button = $(this).parent().attr( "id" ).split( "_" )[0]
-  #   # pageNum = pages.indexOf( button )
-
-  #   console.log $("##{button}").offset().top - 91
-
-  #   ignoreScrollEvents = true
-  #   # $(document).scrollTop( $( "##{button}" ).offset().top - 91 )
-
-  #   $("html, body").animate( { scrollTop: $("##{button}").offset().top }, 1000 )
-
   $(".work-page-button").on 'click', (e) ->
     workPageSelector( $(this).attr("category") )
+
+  $("#navigation-list li").on 'click', (e) ->
+    scrollGoToPage $(this).attr("id").split( "_button" )[0]
 
   $(window).resize ->
     navTop = $(window).height() + 171
     handleScrollCase $('#landing').parent().scrollTop()
+
+  ## SCROLL
 
   $('#landing').parent().scroll ->
     # if ! scrollAnimating then
     handleScrollCase $(this).scrollTop()
 
   handleScrollCase = ( top ) ->
-
-    # ignore = ignoreScrollEvents
-    # ignoreScrollEvents = false
-
-    # if ignore then return false
-
-
-
     currentPos = top
     currentNavPos = $('#navigation-bar').position().top
 
