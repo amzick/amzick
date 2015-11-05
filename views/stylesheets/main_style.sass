@@ -337,29 +337,29 @@ td, li
   &#blog
     .body
       @include basicBody(600px)
+      .img-wrapper
+        height: 300px
       .blog_post
-        height : 95%
-        .blog_post_header
-          text-align: center
-          margin-bottom: 5px
-          h2
-            display: inline-block
-            padding-left : 0px
-            font-size: 40px
-            font-style: normal
-          p
-            display: inline-block
-            color: gray
-        .blog_post_body
+        height : 300px
+        .blog_post_title
+          font-weight: 300
+          font-size: 1.4em
+          padding: 0px
           margin-left: 40px
           margin-right: 40px
-          #video_insert
-            margin-bottom: 20px
-            iframe
-              display: block
-              margin : 0px auto
+          margin-top: 40px
+        .blog_post_body
+          font-style: italic
+          font-weight: 300
+          margin-left: 40px
+          margin-right: 40px
+          padding-top: 10px
       #see-all
-        text-align: center
+        position: absolute
+        bottom: 0
+        right: 0
+        padding-bottom: 40px
+        padding-right:  40px
         a
           color : grey
           text-decoration : none
@@ -378,7 +378,7 @@ td, li
         @include simpleEase()
         color : white
         &:hover
-          color : gray
+          color : lighten( white, 20% )
       p
         color : white
         padding-top : 200px

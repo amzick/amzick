@@ -66,16 +66,18 @@
 
 #blog.page
   .body
-    %img{ src: "https://#{@img_url}" }
+    .img-wrapper
+      %img{ src: "https://#{@img_url}", width: "820", height: "300" }
 
     .blog_post
-      - if @latest_post["title"] 
-        %h3= @latest_post["title"].upcase + ", " + Time.parse( @latest_post["date"] ).strftime("%B %e, %Y").upcase
-      
-      - body = @latest_post["body"]
-      %p.blog_post_body= body[0..100].gsub(/\s\w+\s*$/, '...</p>')
+      - if @latest_post
+        %h3.blog_post_title= @latest_post["title"].upcase + ", " + Time.parse( @latest_post["date"] ).strftime("%B %e, %Y").upcase
+
+        - body = @latest_post["body"]
+        .blog_post_body
+          = if body then body[0..100].gsub(/\s\w+\s*$/, '...</p>') end
     #see-all
-      %a{ :href => "//aaronmicahzick.tumblr.com/" } Continue reading...
+      %a{ :href => "//aaronmicahzick.tumblr.com/" } continue reading...
 
 #contact.page
   .body

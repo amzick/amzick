@@ -57,7 +57,7 @@ client = Tumblr::Client.new({
     :oauth_token_secret => 'ozyLNwhEUZruJb5CEHHYDq053fgmNzKUyHaGDLL0XPa9cnDrdn'
   })
 
-get_posts = client.posts "aaronmicahzick.tumblr.com", :type => "text"
+# get_posts = client.posts "aaronmicahzick.tumblr.com", :type => "text"
 
 
 ##########################################################
@@ -75,20 +75,23 @@ get "/" do
 
   @work_items = WorkItem.all
 
+  get_posts = client.posts "aaronmicahzick.tumblr.com", :type => "text"
   @latest_post = get_posts["posts"][0]
 
-  body = @latest_post["body"]
+  if @latest_post
+    body = @latest_post["body"] # ? @latest_post["body"] : @latest_post["comment"]
 
-  if body.include?( "<figure data-orig-width" ) and body.include?( "<img data-orig-width" )
-    @img_url = body.split( "https://" )[1].split( '"/></figure>' )[0]
+    if body.include?( "<figure data-orig-width" ) and body.include?( "<img data-orig-width" )
+      @img_url = body[body.index( "https://" ) + "https://".length...body.index( '"/></figure>' )]
 
-    before = body.index( "<figure" )
-    after  = body.index( "</figure>") + "</figure>".length
+      before = body.index( "<figure" )
+      after  = body.index( "</figure>") + "</figure>".length
 
-    new_body = body[0...before] + body[after...-1]
+      new_body = body[0...before] + body[after...-1]
+
+      @latest_post["body"] = new_body
+    end
   end
-
-  @latest_post["body"] = new_body
 
   @title = "AM ZICK"
   haml :"fields/index"
