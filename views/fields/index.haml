@@ -54,8 +54,9 @@
           %span MUSIC
         %td.work-page-button.current{ category: "all" }
           %span ALL
-
-    %table#work-list= @fields_map[ :work ][ 0 ].body
+          
+    .table-wrapper
+      %table#work-list= @fields_map[ :work ][ 0 ].body
 
     .work-page-footer
       %a{ :href => "/zick_cv.pdf" } See full CV

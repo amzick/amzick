@@ -255,18 +255,21 @@ td, li
 
   &#work
     .body
-      @include basicBody(700px)
-      #work-list
-        padding : 30px
-        width: 100%
-        .work-item
-          font-style: italic
-          td
-            font-weight: 700
-        .sub.work-item
-          td
-            font-weight: 300
-            padding-bottom: 1em
+      @include basicBody(587px)
+      .table-wrapper
+        height: 475px
+        overflow-y: scroll
+        #work-list
+          padding : 30px
+          width: 100%
+          .work-item
+            font-style: italic
+            td
+              font-weight: 700
+          .sub.work-item
+            td
+              font-weight: 300
+              padding-bottom: 1em
       table#work-page-nav
         width : 100%
         tr
@@ -307,7 +310,7 @@ td, li
         width: 100%
         text-align: center
         position: absolute
-        bottom: 40px
+        bottom: 10px
         a
           text-decoration: none
           color: gray
@@ -318,7 +321,7 @@ td, li
 
   &#gear
     .body
-      @include basicBody(548px)
+      @include basicBody(587px)
       background-image  : url("/images/gear_new.jpg")
       background-size : contain
       .list
