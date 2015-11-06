@@ -76,7 +76,7 @@
 
         - body = @latest_post["body"]
         .blog_post_body
-          = if body then body[0..100].gsub(/\s\w+\s*$/, '...</p>') end
+          = if body then body[0..400].gsub(/\s\w+\s*$/, '...</p>') end
     #see-all
       %a{ :href => "//aaronmicahzick.tumblr.com/" } continue reading...
 
