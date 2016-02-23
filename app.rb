@@ -75,11 +75,13 @@ get "/" do
 
   @work_items = WorkItem.all
 
-  # get_posts = client.posts "aaronmicahzick.tumblr.com", :type => "text"
-  # @latest_post = get_posts["posts"][0]
+  get_posts = client.posts "aaronmicahzick.tumblr.com", :type => "text"
+  @latest_post = get_posts["posts"][0]
 
-  get_post     = client.posts "aaronmicahzick.tumblr.com", id: "139856711107"
-  @latest_post = get_post["posts"][0]
+  # if we want to grab a single post:
+  
+  # get_post     = client.posts "aaronmicahzick.tumblr.com", id: "139856711107"
+  # @latest_post = get_post["posts"][0]
 
   if @latest_post
     body = @latest_post["body"] # ? @latest_post["body"] : @latest_post["comment"]
