@@ -59,7 +59,8 @@
       %table#work-list= @fields_map[ :work ][ 0 ].body
 
     .work-page-footer
-      %a{ :href => "/zick_cv.pdf" } See full CV
+      - cv_link = @fields_map[ :work ][ 1 ].body
+      %a{ :href => "#{cv_link}", :target => "_blank" } See full CV
 
 #gear.page
   .body
