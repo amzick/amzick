@@ -75,14 +75,17 @@ get "/" do
 
   @work_items = WorkItem.all
 
-  get_posts = client.posts "aaronmicahzick.tumblr.com", :type => "text"
-  @latest_post = get_posts["posts"][0]
+  # get_posts = client.posts "aaronmicahzick.tumblr.com", :type => "text"
+  # @latest_post = get_posts["posts"][0]
+
+  get_post     = client.posts "aaronmicahzick.tumblr.com", id: "139856711107"
+  @latest_post = get_post["posts"][0]
 
   if @latest_post
     body = @latest_post["body"] # ? @latest_post["body"] : @latest_post["comment"]
 
-    if body.include?( "<figure data-orig-width" ) and body.include?( "<img data-orig-width" )
-      @img_url = body[body.index( "https://" ) + "https://".length...body.index( '"/></figure>' )]
+    if body.include?( "<figure" ) and body.include?( "<img" )
+      @img_url = body[ body.index( "https://" ) + "https://".length...body.index( '.jpg' ) + ".jpg".length ]
 
       before = body.index( "<figure" )
       after  = body.index( "</figure>") + "</figure>".length
