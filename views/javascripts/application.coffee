@@ -10,8 +10,8 @@
 
 addEmailLink = ->
   if $("#email") != null
-    userName     = "AARON.ZICK"
-    hostName     = "GMAIL.COM"
+    userName     = "aaron.zick"
+    hostName     = "gmail.com"
     emailAddress = userName + "@" + hostName
     $("#email").replaceWith "<a href='mailto:" + emailAddress + "'>" + emailAddress + "</a>"
 
